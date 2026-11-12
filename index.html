@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Five Designs</title>
+<link rel="icon" type="image/png" sizes="64x64" href="img/favicon-64.png?v=3">
+<link rel="icon" type="image/png" sizes="256x256" href="img/favicon-256.png?v=3">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png?v=3">
+<style>:root{color-scheme:light}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400&display=swap">
+<style>
+/* Fourth page. Misty mauve wall, cream cabinets, rose and olive accents, pink footer. T-Progress, five stations, one per design. */
+:root{
+  --canvas:#D3C2C9; --canvas-lt:#DCCDD3; --canvas-dk:#C8B5BD; --pink:#E3A6AC;
+  --olive:#637040; --olive-lt:#9FB295; --rose:#A34860; --slate:#4F5D75; --blue-lt:#BFC8D3;
+  --trim:#C8A030; --trim-dk:#9A7B24; --neutral:#F0E8D8; --label-bg:#FAF4E8; --butter:#F4DBB2;
+  --ink:#2C1F14; --ink-warm:#6E5140; --rule:#D8C8A0;
+  --display:"Cormorant Garamond","Cormorant",Garamond,"Times New Roman",serif;
+  --mono:"IBM Plex Mono","Courier New",monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--canvas);background-image:linear-gradient(172deg,var(--canvas-lt) 0%,var(--canvas) 55%,var(--canvas-dk) 100%);color:var(--ink);font-family:var(--display);font-size:19px;line-height:1.5;padding-block:36px 0;padding-inline:16px;position:relative}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.09;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cg fill='none' stroke='%239A7B24' stroke-width='1.3' stroke-linecap='round'%3E%3Cpath d='M40 16 Q34 26 40 30 Q46 26 40 16 Z'/%3E%3Cpath d='M40 64 Q34 54 40 50 Q46 54 40 64 Z'/%3E%3Cpath d='M16 40 Q26 34 30 40 Q26 46 16 40 Z'/%3E%3Cpath d='M64 40 Q54 34 50 40 Q54 46 64 40 Z'/%3E%3Cpath d='M0 0 Q20 20 30 20 M80 0 Q60 20 50 20 M0 80 Q20 60 20 50 M80 80 Q60 60 50 60'/%3E%3C/g%3E%3Cg fill='%239A7B24'%3E%3Ccircle cx='40' cy='40' r='2.4'/%3E%3C/g%3E%3C/svg%3E");background-size:80px 80px}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;mix-blend-mode:multiply;opacity:.06;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E")}
+.wrap{position:relative;z-index:1;max-width:920px;margin:0 auto;display:grid;gap:0;justify-items:center;text-align:center}
+.wrap>*{width:100%}
+h1,h2,h3{font-family:var(--display);font-weight:300;line-height:1.1;text-wrap:balance;margin:0;text-transform:uppercase;letter-spacing:.18em;color:var(--rose)}
+h1{font-size:clamp(2.4rem,7vw,4.4rem);letter-spacing:.26em;padding-left:.26em}
+h3{font-size:1.15rem;letter-spacing:.14em}
+p{margin:0 auto;max-width:62ch}
+.aux{font-size:.95rem;color:var(--ink-warm);font-style:italic}
+.tag{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;border:1px solid var(--trim);color:var(--rose);padding:3px 10px;border-radius:999px;background:var(--neutral);display:inline-block}
+.sign{display:inline-block;background:var(--rose);color:var(--neutral);border:1px solid var(--trim);border-radius:999px;padding:6px 20px;font-size:.9rem;letter-spacing:.24em;text-transform:uppercase}
+.orn{color:var(--trim);letter-spacing:.6em;padding-left:.6em;font-size:.95rem}
+.node{display:grid;justify-items:center;padding-block:26px}
+.node .stem{width:1px;height:28px;background:var(--trim)}
+.node .dot{width:11px;height:11px;background:var(--trim);transform:rotate(45deg);margin:6px 0}
+.node .tag{margin-top:6px}
+.frame{position:relative;background:var(--neutral);border:1px solid var(--trim);border-radius:14px;padding:26px 22px 28px;display:grid;gap:16px;justify-items:center}
+.frame::after{content:"";position:absolute;inset:6px;border:1px solid var(--trim);border-radius:9px;pointer-events:none}
+.frame>*{position:relative;z-index:1}
+.hero{width:100%;max-width:760px;aspect-ratio:1400/636;overflow:hidden;border:1px solid var(--trim);border-radius:10px;position:relative;background:var(--label-bg)}
+.hero img{width:100%;height:100%;object-fit:cover;display:block}
+.hero::after{content:"";position:absolute;inset:7px;border:1px solid var(--trim);border-radius:6px;pointer-events:none}
+.credit{font-size:.78rem;margin-top:-8px}
+.title{display:grid;gap:4px;justify-items:center}
+.title .small{font-size:clamp(.9rem,2.2vw,1.2rem);letter-spacing:.5em;padding-left:.5em;color:var(--rose);text-transform:uppercase;font-weight:300}
+.btn{font:inherit;font-size:.86rem;letter-spacing:.2em;text-transform:uppercase;padding:9px 20px;border:1px solid var(--trim);background:var(--label-bg);color:var(--rose);cursor:pointer;border-radius:999px;text-decoration:none;display:inline-block}
+.btn:focus-visible{outline:2px solid var(--rose);outline-offset:3px}
+.btn.primary,.btn[aria-pressed="true"]{background:var(--rose);color:var(--neutral)}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:center}
+.row label{font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:var(--rose)}
+input[type=range]{accent-color:var(--rose);width:200px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%;max-width:760px;align-items:stretch;text-align:left}
+@media (max-width:620px){.grid{grid-template-columns:1fr}}
+.cell{border:1px solid var(--trim);border-radius:12px;background:var(--label-bg);padding:12px 16px;display:grid;gap:4px;align-content:start}
+.cell .tag{justify-self:start}
+.cell p{max-width:none;font-size:1rem}
+.wide{grid-column:1/-1}
+canvas{width:100%;height:auto;display:block;border:1px solid var(--trim);border-radius:10px;background:var(--label-bg)}
+.fig{width:100%;max-width:760px;display:grid;gap:8px}
+.fig .aux{font-size:.85rem}
+.ask{width:100%;max-width:760px;border:1px solid var(--trim);border-radius:12px;background:var(--label-bg);padding:14px 16px;display:grid;gap:10px;justify-items:center}
+.ask .q{font-size:1.05rem;max-width:62ch}
+.ask .fb{font-size:.95rem;color:var(--ink-warm);font-style:italic;min-height:1.4em;max-width:62ch}
+.ask .fb.good{color:var(--olive)} .ask .fb.bad{color:var(--rose)}
+.choices{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.chip{font:inherit;font-size:.9rem;padding:6px 14px;border:1px solid var(--trim);border-radius:999px;background:var(--neutral);color:var(--ink);cursor:pointer;max-width:100%}
+.chip[aria-pressed="true"]{background:var(--butter);border-color:var(--trim-dk)}
+.chip.right{background:var(--olive-lt);border-color:var(--olive)} .chip.wrong{background:var(--pink);border-color:var(--rose)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;width:100%;max-width:760px}
+.stats>div{border:1px solid var(--trim);border-radius:10px;background:var(--label-bg);padding:8px 6px;display:grid;gap:2px}
+.stats b{font-weight:400;font-size:1.25rem;color:var(--rose);font-variant-numeric:tabular-nums}
+.stats small{font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-warm)}
+table{border-collapse:separate;border-spacing:4px;font-size:.92rem;margin:0 auto;border:1px solid var(--trim);border-radius:10px;padding:6px;background:var(--neutral);text-align:left;max-width:100%}
+th,td{padding:6px 10px;background:var(--label-bg);border-radius:6px;vertical-align:top}
+th{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-warm);font-weight:400;background:transparent}
+td:first-child{color:var(--rose);white-space:nowrap}
+.closing .quote{font-style:italic;font-size:1.25rem;max-width:56ch;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:12px 6px;color:var(--ink);margin:0 auto}
+.ref{font-size:.85rem;color:var(--ink-warm)}
+footer{margin-top:34px;margin-inline:-16px;background:var(--pink);color:var(--rose);border-top:1px solid var(--trim);padding:18px 16px;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:14px;font-size:.8rem;letter-spacing:.2em;text-transform:uppercase}
+footer .orn{color:var(--trim-dk);letter-spacing:.5em;padding-left:.5em}
+footer a{color:var(--rose);text-decoration:none;border-bottom:1px solid var(--trim)}
+</style>
+
+<div class="wrap">
+
+<header class="frame" aria-label="Title">
+  <div class="hero"><img src="img/arch.webp" alt="A tunnel of apple trees trained over iron arches, red apples hanging from the canopy, grass path beneath"></div>
+  <p class="aux credit">Photograph: BBC</p>
+  <div class="title">
+    <div class="small">Things I care about</div>
+    <h1>Five Designs</h1>
+    <div class="orn">✦ · ✦</div>
+  </div>
+  <p>Five ways to find a cause without a laboratory, each told through the study the lecture uses. For every one, the same three questions: who decided who was treated, what has to be assumed, and how the authors checked. The pictures are sketches of each study's logic, drawn to show the idea rather than the published data.</p>
+</header>
+
+<div class="node"><div class="stem"></div><div class="dot"></div><span class="tag">Design I · Randomised controlled trial</span></div>
+
+<section class="frame" aria-label="Randomised controlled trial">
+  <span class="sign">Let a lottery choose</span>
+  <div class="grid">
+    <div class="cell"><span class="tag">The question</span><p>Rural Rajasthan, 2004 to 2007. Would reliable immunisation camps raise the share of children fully immunised, and would a small reward on top, a kilogram of lentils per visit and a set of plates on completion, raise the share further?</p></div>
+    <div class="cell"><span class="tag">Who decided who was treated</span><p>A lottery. 134 villages were drawn at random into three groups: a monthly camp (30 villages, 379 children), a camp with the incentives (30 villages, 382 children), and no intervention (74 villages, 860 children). Nothing about a village's poverty, distance or attitude to vaccines decided its group.</p></div>
+    <div class="cell"><span class="tag">The comparison</span><p>The share of children aged one to three who were fully immunised, by group. Because the groups were drawn by lottery, a raw comparison of the three shares is the causal effect.</p></div>
+    <div class="cell"><span class="tag">What they found</span><p>About 6% fully immunised in control villages, 18% with a camp, and 39% with a camp and incentives. The reward more than doubled the camp's effect, and cost less per child immunised because fixed costs were spread over more children.</p></div>
+    <div class="cell wide"><span class="tag">The assumption, and the check</span><p>Randomisation makes the groups alike in everything, measured or not, apart from the treatment. The check is a balance table: before the camps opened, the three groups should look the same on household size, distance to a clinic, baseline immunisation and so on. The sketch below shows why. Draw the lottery again and again and the groups' averages barely move; let villages choose for themselves and they drift apart.</p></div>
+  </div>
+  <div class="fig">
+    <div class="row"><button type="button" class="btn primary" id="rctDraw">Draw the lottery again</button><button type="button" class="btn" id="rctSelf" aria-pressed="false">Let villages choose instead</button></div>
+    <canvas id="rct" width="1000" height="360" aria-label="Village groups and their baseline averages"></canvas>
+    <span class="aux">Sketch: 134 villages with a made-up baseline distance to the nearest clinic. Under the lottery the three groups' average distances agree; under self-selection the keen villages, which are nearer, take the camps.</span>
+  </div>
+  <div class="stats" id="rctStats"></div>
+  <div class="ask">
+    <div class="q">Why can the raw difference between the three shares be read as a cause here, when the regression on the previous page could not be?</div>
+    <div class="choices" id="rctQ"><button type="button" class="chip" data-v="lot">Because a lottery, not the villages, decided who got a camp</button><button type="button" class="chip" data-v="n">Because the sample is large</button><button type="button" class="chip" data-v="sig">Because the differences are statistically significant</button></div>
+    <div class="fb" id="rctF"></div>
+  </div>
+  <p class="ref">Banerjee, Duflo, Glennerster and Kothari, BMJ 2010; 340: c2220.</p>
+</section>
+
+<div class="node"><div class="stem"></div><div class="dot"></div><span class="tag">Design II · Difference in differences</span></div>
+
+<section class="frame" aria-label="Difference in differences">
+  <span class="sign">Two places, before and after</span>
+  <div class="grid">
+    <div class="cell"><span class="tag">The question</span><p>Did fracking bring people to the places that allowed it? Pennsylvania permitted drilling in the Marcellus shale from the late 2000s. New York, on the same shale, stopped drilling with a moratorium and then a ban.</p></div>
+    <div class="cell"><span class="tag">Who decided who was treated</span><p>Two state governments, for reasons of politics and law rather than because of where population was heading. That is the claim the design rests on: the policy split the two states, not their trends.</p></div>
+    <div class="cell"><span class="tag">The comparison</span><p>Population in the two states from 2000 to 2020. The change in Pennsylvania after drilling began, minus the change in New York over the same years. New York stands in for what Pennsylvania would have done without fracking.</p></div>
+    <div class="cell"><span class="tag">What was found</span><p>A Land Economy MPhil dissertation (Faulk, 2022) used this comparison to ask whether fracking counties grew relative to their neighbours across the border. The estimate is the gap that opens after drilling begins, over and above the pre-existing difference.</p></div>
+    <div class="cell wide"><span class="tag">The assumption, and the check</span><p>Parallel trends: without fracking, Pennsylvania's population would have moved in step with New York's. The only evidence is the years before drilling. If the two lines run parallel until the policy and part afterwards, the design is credible. If they were already parting before, the gap after proves nothing. Drag the slider below to give Pennsylvania a trend of its own before 2008 and watch the estimate change while the policy effect does not.</p></div>
+  </div>
+  <div class="fig">
+    <div class="row"><label for="didPre">Pre-period divergence</label><input type="range" id="didPre" min="0" max="10" value="0" step="1"></div>
+    <canvas id="did" width="1000" height="380" aria-label="Population index in two states, before and after drilling"></canvas>
+    <span class="aux">Sketch: population index, 2000 = 100, drilling from 2008 marked. The dashed line is the counterfactual Pennsylvania the design assumes: Pennsylvania's level, New York's trend.</span>
+  </div>
+  <div class="stats" id="didStats"></div>
+  <div class="ask">
+    <div class="q">Which observation would most damage this design?</div>
+    <div class="choices" id="didQ"><button type="button" class="chip" data-v="pre">Pennsylvania was already growing faster than New York in 2003 to 2007</button><button type="button" class="chip" data-v="level">Pennsylvania had more people than New York in 2000</button><button type="button" class="chip" data-v="post">New York grew after 2008</button></div>
+    <div class="fb" id="didF"></div>
+  </div>
+  <p class="ref">Faulk, 2022, MPhil dissertation, Department of Land Economy.</p>
+</section>
+
+<div class="node"><div class="stem"></div><div class="dot"></div><span class="tag">Design III · Synthetic control</span></div>
+
+<section class="frame" aria-label="Synthetic control">
+  <span class="sign">Build the control from parts</span>
+  <div class="grid">
+    <div class="cell"><span class="tag">The question</span><p>Did California's Proposition 99 of 1988, a 25 cent per pack tobacco tax with the revenue spent on anti-smoking campaigns, reduce cigarette sales?</p></div>
+    <div class="cell"><span class="tag">Who decided who was treated</span><p>California's voters, in a referendum. No other state did the same at the time, so there is one treated unit and no obvious twin to compare with.</p></div>
+    <div class="cell"><span class="tag">The comparison</span><p>A synthetic California: a weighted average of other states chosen so that, before 1988, the average tracked California's cigarette sales closely. The weights were Utah 0.334, Nevada 0.234, Montana 0.199, Colorado 0.164 and Connecticut 0.069, summing to one. After 1988 the synthetic state keeps going as California would have without the law.</p></div>
+    <div class="cell"><span class="tag">What they found</span><p>Sales in California fell away from the synthetic line after 1988. By 2000, per capita sales were about 26 packs a year lower than the synthetic California, roughly a quarter below the counterfactual.</p></div>
+    <div class="cell wide"><span class="tag">The assumption, and the check</span><p>The synthetic control is a good counterfactual only if the match before 1988 is close and the donor states had no tobacco policy of their own afterwards. The check is a placebo test: build a synthetic version of every untreated state in turn, as if it had passed the law, and see whether California's gap is unusually large among them. Click a donor below to see what each contributes to the weighted average.</p></div>
+  </div>
+  <div class="fig">
+    <canvas id="scm" width="1000" height="380" aria-label="California against synthetic California, cigarette sales"></canvas>
+    <span class="aux">Sketch of the paper's figure: packs per head, 1970 to 2000, Proposition 99 marked in 1988. The dashed line is the synthetic California built from the five donor states and their published weights.</span>
+    <div class="choices" id="scmDonors"></div>
+    <div class="aux" id="scmNote">Each donor's weight is the share of the synthetic California that state supplies. Together the five make one whole.</div>
+  </div>
+  <div class="ask">
+    <div class="q">What would make the synthetic control untrustworthy?</div>
+    <div class="choices" id="scmQ"><button type="button" class="chip" data-v="fit">The weighted average fails to track California before 1988</button><button type="button" class="chip" data-v="five">Only five states get positive weight</button><button type="button" class="chip" data-v="sum">The weights sum to one</button></div>
+    <div class="fb" id="scmF"></div>
+  </div>
+  <p class="ref">Abadie, Diamond and Hainmueller, Journal of the American Statistical Association 2010; 105(490): 493 to 505.</p>
+</section>
+
+<div class="node"><div class="stem"></div><div class="dot"></div><span class="tag">Design IV · Regression discontinuity</span></div>
+
+<section class="frame" aria-label="Regression discontinuity">
+  <span class="sign">Compare either side of a line</span>
+  <div class="grid">
+    <div class="cell"><span class="tag">The question</span><p>Does a colonial institution leave a mark centuries later? The mita, from 1573 to 1812, forced indigenous communities in part of Peru and Bolivia to send a seventh of their adult men to work in the silver mines of Potosí and the mercury mines of Huancavelica.</p></div>
+    <div class="cell"><span class="tag">Who decided who was treated</span><p>The Spanish crown drew a boundary around the catchment. Villages just inside sent men to the mines; villages just outside did not. On either side of the line the land, the people and the climate were the same.</p></div>
+    <div class="cell"><span class="tag">The comparison</span><p>Households today, just inside the old boundary against just outside. Distance to the boundary is the running variable; the treatment switches at zero. Only places close to the line are compared, because only there is everything else alike.</p></div>
+    <div class="cell"><span class="tag">What they found</span><p>Household consumption inside the former mita catchment is about 25% lower today, and the prevalence of stunted growth among children about 6 percentage points higher. The channels were fewer large landowners, less secure land tenure and worse roads inside the line.</p></div>
+    <div class="cell wide"><span class="tag">The assumption, and the check</span><p>Nothing else jumps at the boundary. Households could not sort themselves across the line in anticipation, and other policies do not change there. The checks are a density test, to see whether households bunch on one side, and balance tests on things the mita could not have caused, such as elevation and rainfall. Narrow the bandwidth below and watch the estimate steady while the sample shrinks.</p></div>
+  </div>
+  <div class="fig">
+    <div class="row"><label for="rddBw">Bandwidth, km</label><input type="range" id="rddBw" min="10" max="100" value="50" step="5"><span class="aux" id="rddBwTxt">50 km</span></div>
+    <canvas id="rdd" width="1000" height="380" aria-label="Consumption against distance to the mita boundary"></canvas>
+    <span class="aux">Sketch: districts by distance to the boundary, inside to the left of zero, with a made-up consumption index. The lines are fitted separately on each side within the bandwidth; the gap at zero is the estimate.</span>
+  </div>
+  <div class="stats" id="rddStats"></div>
+  <div class="ask">
+    <div class="q">Why compare only places near the boundary, when the whole catchment was treated?</div>
+    <div class="choices" id="rddQ"><button type="button" class="chip" data-v="alike">Because only near the line are the two sides alike in everything but the mita</button><button type="button" class="chip" data-v="more">Because there are more households near the line</button><button type="button" class="chip" data-v="map">Because the boundary is easier to map there</button></div>
+    <div class="fb" id="rddF"></div>
+  </div>
+  <p class="ref">Dell, Econometrica 2010; 78(6): 1863 to 1903.</p>
+</section>
+
+<div class="node"><div class="stem"></div><div class="dot"></div><span class="tag">Design V · Instrumental variable</span></div>
+
+<section class="frame" aria-label="Instrumental variable">
+  <span class="sign">Find a lever that moves only the treatment</span>
+  <div class="grid">
+    <div class="cell"><span class="tag">The question</span><p>What did military service in the Vietnam era do to men's later earnings? Comparing veterans with non-veterans will not do, because the men who served differed from those who did not in health, schooling and prospects.</p></div>
+    <div class="cell"><span class="tag">Who decided who was treated</span><p>Partly a lottery. From 1970, birthdays were drawn and given numbers from 1 to 365; men with low numbers were called first. The number did not determine service, since many with low numbers were exempt and many with high numbers volunteered, but a low number made service much more likely.</p></div>
+    <div class="cell"><span class="tag">The comparison</span><p>Two stages. First, how much more likely a man with a low number was to serve: the first stage. Second, how much lower the earnings of low-number men were years later: the reduced form. The effect of service is the second divided by the first, because the lottery can only have moved earnings through service.</p></div>
+    <div class="cell"><span class="tag">What they found</span><p>White veterans earned about 15% less than comparable non-veterans in the early 1980s, roughly 3,500 dollars a year at the time. The lottery number itself has no bearing on pay, so the gap it opens is the cost of having served.</p></div>
+    <div class="cell wide"><span class="tag">The assumption, and the check</span><p>Two conditions. The instrument must move the treatment, which the first stage shows directly. And the instrument must affect the outcome through the treatment alone: a birthday number cannot change earnings except by sending a man into the army. That exclusion restriction cannot be tested; it is argued from how the lottery worked. Drag the slider to see how a weak first stage inflates the estimate from the same reduced form.</p></div>
+  </div>
+  <div class="fig">
+    <div class="row"><label for="ivFs">First stage</label><input type="range" id="ivFs" min="5" max="40" value="15" step="1"><span class="aux" id="ivFsTxt">15 points more likely to serve</span></div>
+    <canvas id="iv" width="1000" height="380" aria-label="Service probability and earnings by lottery number"></canvas>
+    <span class="aux">Sketch: lottery numbers along the bottom, with those below the call-up ceiling on the left. Upper line, share who served; lower line, later earnings. The jumps are illustrative.</span>
+  </div>
+  <div class="stats" id="ivStats"></div>
+  <div class="ask">
+    <div class="q">Which of these would break the lottery as an instrument?</div>
+    <div class="choices" id="ivQ"><button type="button" class="chip" data-v="school">Men with low numbers stayed in university to avoid the draft, and the extra schooling raised their pay</button><button type="button" class="chip" data-v="many">Many men with low numbers never served</button><button type="button" class="chip" data-v="rand">The numbers were drawn at random</button></div>
+    <div class="fb" id="ivF"></div>
+  </div>
+  <p class="ref">Angrist, American Economic Review 1990; 80(3): 313 to 336.</p>
+</section>
+
+<div class="node"><div class="stem"></div><div class="dot"></div><span class="tag">The five, side by side</span></div>
+
+<section class="frame" aria-label="Summary">
+  <span class="sign">Who was the host</span>
+  <div style="overflow-x:auto;max-width:100%">
+  <table>
+    <thead><tr><th>Design</th><th>Who decided who was treated</th><th>What has to be assumed</th><th>How to check</th></tr></thead>
+    <tbody>
+      <tr><td>Randomised trial</td><td>A lottery run by the researchers</td><td>The lottery was fair and people stayed in their groups</td><td>Balance table before treatment</td></tr>
+      <tr><td>Difference in differences</td><td>A policy that hit one group at one time</td><td>Parallel trends without the policy</td><td>Pre-period trends, placebo dates</td></tr>
+      <tr><td>Synthetic control</td><td>A policy in one unit with many untreated units</td><td>The weighted donors track the unit before and would have after</td><td>Pre-period fit, placebo units</td></tr>
+      <tr><td>Regression discontinuity</td><td>A rule with a threshold or a boundary</td><td>Nothing else changes at the threshold; no sorting across the line</td><td>Density test, balance at the threshold</td></tr>
+      <tr><td>Instrumental variable</td><td>Something that nudged treatment for an unrelated reason</td><td>The nudge moves the treatment and touches the outcome only through the treatment</td><td>First-stage strength; the exclusion is argued, not tested</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="closing"><div class="quote">None of the five lets the data decide. Each begins by finding out who the host was, the lottery, the legislature, the referendum, the colonial surveyor, the draft board, and then asks whether the host's rule could have reached the outcome by any other road. A regression table answers the second question only after the first has been settled.</div></div>
+</section>
+
+<footer><span><a href="https://jerchenn.github.io/monty-hall/">Monty Hall</a></span><span class="orn">✦</span><span><a href="https://jerchenn.github.io/orchard/">Orchard Census</a></span><span class="orn">✦</span><span><a href="https://jerchenn.github.io/stata/">The Do-File</a></span><span class="orn">✦</span><span>Five Designs</span></footer>
+</div>
+
+<script>
+(function(){
+  const $=id=>document.getElementById(id);
+  let seed=20261113; const srand=()=>{ seed|=0; seed=seed+0x6D2B79F5|0; let t=Math.imul(seed^seed>>>15,1|seed); t=t+Math.imul(t^t>>>7,61|t)^t; return ((t^t>>>14)>>>0)/4294967296; };
+  const rnd=n=>Math.floor(Math.random()*n);
+  const gauss=r=>{ let u=0,v=0; while(u===0)u=r(); while(v===0)v=r(); return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v); };
+  const mean=a=>a.reduce((s,x)=>s+x,0)/a.length;
+  const statBox=(id,items)=>{ $(id).innerHTML=items.map(([l,v])=>'<div><b>'+v+'</b><small>'+l+'</small></div>').join(''); };
+  const chipQ=(id,fid,right,ok,no)=>[...$(id).children].forEach(c=>c.addEventListener('click',()=>{ [...$(id).children].forEach(x=>{x.setAttribute('aria-pressed','false');x.classList.remove('right','wrong');}); c.setAttribute('aria-pressed','true'); const good=c.dataset.v===right; c.classList.add(good?'right':'wrong'); $(fid).textContent=good?ok:no; $(fid).className='fb '+(good?'good':'bad'); }));
+  function axes(ctx,W,H,L,R,T,B,xlo,xhi,ylo,yhi,xl,yl,xt){
+    ctx.clearRect(0,0,W,H); ctx.strokeStyle='#D8C8A0'; ctx.lineWidth=1; ctx.strokeRect(L,T,W-L-R,H-T-B);
+    ctx.fillStyle='#6E5140'; ctx.font='17px Cormorant Garamond, serif'; ctx.textAlign='center'; ctx.textBaseline='top';
+    const X=v=>L+(v-xlo)/(xhi-xlo)*(W-L-R), Y=v=>H-B-(v-ylo)/(yhi-ylo)*(H-T-B);
+    (xt||[0,1,2,3,4].map(k=>xlo+(xhi-xlo)*k/4)).forEach(x=>ctx.fillText(Number.isInteger(x)?x:x.toFixed(1),X(x),H-B+6));
+    ctx.textAlign='right'; ctx.textBaseline='middle'; for(let k=0;k<=4;k++){ const y=ylo+(yhi-ylo)*k/4; ctx.fillText(Number.isInteger(y)?y:y.toFixed(1),L-6,Y(y)); }
+    ctx.textAlign='center'; ctx.textBaseline='bottom'; ctx.fillText(xl,(L+W-R)/2,H-4); ctx.save(); ctx.translate(14,(T+H-B)/2); ctx.rotate(-Math.PI/2); ctx.fillText(yl,0,0); ctx.restore();
+    return [X,Y];
+  }
+  const label=(ctx,txt,x,y,col,align)=>{ ctx.fillStyle=col; ctx.font='17px Cormorant Garamond, serif'; ctx.textAlign=align||'left'; ctx.textBaseline='middle'; ctx.fillText(txt,x,y); };
+
+  // ---- I. RCT: 134 villages, baseline distance to clinic; lottery vs self-selection ----
+  const villages=Array.from({length:134},(_,i)=>({i,dist:Math.max(1,8+4*gauss(srand)),keen:srand()}));
+  let selfSelect=false;
+  function assign(){ if(!selfSelect){ const order=villages.map(v=>v.i); for(let k=order.length-1;k>0;k--){ const m=rnd(k+1); [order[k],order[m]]=[order[m],order[k]]; } order.forEach((id,pos)=>{ villages[id].arm=pos<30?1:(pos<60?2:0); }); }
+    else { const order=villages.slice().sort((a,b)=>(a.dist-b.dist)+2*(b.keen-a.keen)).map(v=>v.i); order.forEach((id,pos)=>{ villages[id].arm=pos<30?2:(pos<60?1:0); }); } }
+  function drawRCT(){
+    const cv=$('rct'), ctx=cv.getContext('2d'), W=cv.width,H=cv.height; ctx.clearRect(0,0,W,H);
+    const cols=['#9FB295','#4F5D75','#A34860'], names=['Control','Camp','Camp and incentives'];
+    const cw=W/3; villages.forEach((v,i)=>{ const col=v.arm, k=villages.filter((x,j)=>j<i&&x.arm===col).length; const x=col*cw+30+(k%12)*((cw-60)/12), y=40+Math.floor(k/12)*28; ctx.fillStyle=cols[col]; ctx.beginPath(); ctx.arc(x+10,y,7+Math.min(10,v.dist)*0.5,0,Math.PI*2); ctx.fill(); });
+    [0,1,2].forEach(c=>{ const d=villages.filter(v=>v.arm===c).map(v=>v.dist); label(ctx,names[c]+' · '+d.length+' villages',c*cw+30,H-56,cols[c]); label(ctx,'mean distance to clinic '+mean(d).toFixed(1)+' km',c*cw+30,H-30,'#6E5140'); });
+    const d=[0,1,2].map(c=>mean(villages.filter(v=>v.arm===c).map(v=>v.dist)));
+    statBox('rctStats',[['control, km',d[0].toFixed(1)],['camp, km',d[1].toFixed(1)],['camp + incentives, km',d[2].toFixed(1)],['largest gap, km',(Math.max(...d)-Math.min(...d)).toFixed(1)],['assignment',selfSelect?'villages chose':'lottery']]);
+  }
+  $('rctDraw').addEventListener('click',()=>{ selfSelect=false; $('rctSelf').setAttribute('aria-pressed','false'); assign(); drawRCT(); });
+  $('rctSelf').addEventListener('click',()=>{ selfSelect=!selfSelect; $('rctSelf').setAttribute('aria-pressed',String(selfSelect)); assign(); drawRCT(); });
+  chipQ('rctQ','rctF','lot','Yes. The lottery is a host who knows nothing about the villages, so the groups differ only in the treatment, and the raw comparison is the effect.','Size and significance tell you the difference is not noise. They say nothing about whether the groups were alike to begin with. Only the lottery does that.');
+  assign(); drawRCT();
+
+  // ---- II. DiD: two states, population index ----
+  function drawDID(){
+    const pre=parseInt($('didPre').value,10)/10;   // extra PA growth per year before 2008, index points
+    const yrs=[]; for(let y=2000;y<=2020;y++) yrs.push(y);
+    const ny=yrs.map(y=>100+0.5*(y-2000)), pa=yrs.map(y=>100+0.5*(y-2000)+pre*(Math.min(y,2008)-2000)+(y>2008?1.2*(y-2008):0));
+    const cf=yrs.map((y,i)=>y<=2008?pa[i]:pa[8]+(ny[i]-ny[8]));
+    const cv=$('did'), ctx=cv.getContext('2d'); const [X,Y]=axes(ctx,cv.width,cv.height,60,20,20,48,2000,2020,96,128,'Year','Population index, 2000 = 100',[2000,2005,2010,2015,2020]);
+    ctx.strokeStyle='#9A7B24'; ctx.setLineDash([6,6]); ctx.beginPath(); ctx.moveTo(X(2008),20); ctx.lineTo(X(2008),cv.height-48); ctx.stroke(); ctx.setLineDash([]); label(ctx,'drilling begins',X(2008)+6,34,'#6E5140');
+    const line=(arr,col,dash)=>{ ctx.strokeStyle=col; ctx.lineWidth=2.5; ctx.setLineDash(dash?[5,6]:[]); ctx.beginPath(); arr.forEach((v,i)=>i?ctx.lineTo(X(yrs[i]),Y(v)):ctx.moveTo(X(yrs[i]),Y(v))); ctx.stroke(); ctx.setLineDash([]); };
+    line(ny,'#4F5D75'); line(pa,'#A34860'); line(cf,'#A34860',true);
+    label(ctx,'Pennsylvania',X(2020)-4,Y(pa[20])-12,'#A34860','right'); label(ctx,'New York',X(2020)-4,Y(ny[20])+12,'#4F5D75','right'); label(ctx,'counterfactual PA',X(2014),Y(cf[14])-12,'#A34860','center');
+    const naive=(pa[20]-pa[8])-(ny[20]-ny[8]); const truth=1.2*12;
+    statBox('didStats',[['DiD estimate, index points',naive.toFixed(1)],['true policy effect in the sketch',truth.toFixed(1)],['pre-2008 divergence per year',pre.toFixed(1)]]);
+  }
+  $('didPre').addEventListener('input',drawDID); drawDID();
+  chipQ('didQ','didF','pre','Yes. Diverging trends before the policy mean New York is not a good stand-in for Pennsylvania without fracking, and the gap after 2008 mixes the policy with the old trend.','Different levels are fine, since the design compares changes. New York growing after 2008 is fine too, since the design subtracts that growth.');
+
+  // ---- III. SCM: California against synthetic, sketch of the figure ----
+  const donors=[['Utah',0.334],['Nevada',0.234],['Montana',0.199],['Colorado',0.164],['Connecticut',0.069]];
+  function drawSCM(){
+    const yrs=[]; for(let y=1970;y<=2000;y++) yrs.push(y);
+    const synth=yrs.map(y=>y<=1988?125-1.4*(y-1970)+2*Math.sin((y-1970)/2):100-1.2*(y-1988));
+    const cal=yrs.map((y,i)=>y<=1988?synth[i]+0.6*Math.sin(y):synth[i]-2.2*(y-1988));
+    const cv=$('scm'), ctx=cv.getContext('2d'); const [X,Y]=axes(ctx,cv.width,cv.height,60,20,20,48,1970,2000,40,140,'Year','Cigarette sales, packs per head',[1970,1975,1980,1985,1990,1995,2000]);
+    ctx.strokeStyle='#9A7B24'; ctx.setLineDash([6,6]); ctx.beginPath(); ctx.moveTo(X(1988),20); ctx.lineTo(X(1988),cv.height-48); ctx.stroke(); ctx.setLineDash([]); label(ctx,'Proposition 99',X(1988)+6,34,'#6E5140');
+    const line=(arr,col,dash)=>{ ctx.strokeStyle=col; ctx.lineWidth=2.5; ctx.setLineDash(dash?[5,6]:[]); ctx.beginPath(); arr.forEach((v,i)=>i?ctx.lineTo(X(yrs[i]),Y(v)):ctx.moveTo(X(yrs[i]),Y(v))); ctx.stroke(); ctx.setLineDash([]); };
+    line(synth,'#4F5D75',true); line(cal,'#A34860');
+    label(ctx,'California',X(2000)-4,Y(cal[30])+14,'#A34860','right'); label(ctx,'synthetic California',X(2000)-4,Y(synth[30])-14,'#4F5D75','right');
+    ctx.strokeStyle='#637040'; ctx.lineWidth=2; ctx.beginPath(); ctx.moveTo(X(2000)-40,Y(cal[30])); ctx.lineTo(X(2000)-40,Y(synth[30])); ctx.stroke(); label(ctx,'gap',X(2000)-46,(Y(cal[30])+Y(synth[30]))/2,'#637040','right');
+  }
+  drawSCM();
+  donors.forEach(([n,w])=>{ const b=document.createElement('button'); b.type='button'; b.className='chip'; b.textContent=n+' '+w.toFixed(3); b.addEventListener('click',()=>{ [...$('scmDonors').children].forEach(x=>x.setAttribute('aria-pressed','false')); b.setAttribute('aria-pressed','true'); $('scmNote').textContent=n+' supplies '+(100*w).toFixed(1)+'% of synthetic California. The other '+(100-100*w).toFixed(1)+'% comes from the remaining four donors. States with no weight were too unlike California before 1988 to help.'; }); $('scmDonors').appendChild(b); });
+  chipQ('scmQ','scmF','fit','Yes. If the donors cannot reproduce California before the law, there is no reason to believe they reproduce the California that never passed the law.','Few donors with positive weight is normal, and the weights sum to one by construction. Neither is a flaw.');
+
+  // ---- IV. RDD: districts by distance to the mita boundary ----
+  const districts=Array.from({length:420},()=>{ const d=-100+200*srand(); const inside=d<0; return {d,y:100-0.08*d+(inside?-25:0)+6*gauss(srand)}; });
+  function fitLine(pts){ const n=pts.length, mx=mean(pts.map(p=>p.d)), my=mean(pts.map(p=>p.y)); const sxy=pts.reduce((s,p)=>s+(p.d-mx)*(p.y-my),0), sxx=pts.reduce((s,p)=>s+(p.d-mx)**2,0); const b=sxx?sxy/sxx:0; return [my-b*mx,b]; }
+  function drawRDD(){
+    const bw=parseInt($('rddBw').value,10); $('rddBwTxt').textContent=bw+' km';
+    const cv=$('rdd'), ctx=cv.getContext('2d'); const [X,Y]=axes(ctx,cv.width,cv.height,60,20,20,48,-100,100,30,140,'Distance to the mita boundary, km (inside to the left)','Consumption index',[-100,-50,0,50,100]);
+    ctx.strokeStyle='#9A7B24'; ctx.setLineDash([6,6]); ctx.beginPath(); ctx.moveTo(X(0),20); ctx.lineTo(X(0),cv.height-48); ctx.stroke(); ctx.setLineDash([]);
+    ctx.fillStyle='rgba(227,166,172,.25)'; ctx.fillRect(X(-bw),20,X(bw)-X(-bw),cv.height-68);
+    districts.forEach(p=>{ const used=Math.abs(p.d)<=bw; ctx.fillStyle=p.d<0?'#A34860':'#4F5D75'; ctx.globalAlpha=used?0.9:0.25; ctx.beginPath(); ctx.arc(X(p.d),Y(p.y),2.8,0,Math.PI*2); ctx.fill(); ctx.globalAlpha=1; });
+    const L=districts.filter(p=>p.d<0&&p.d>=-bw), R=districts.filter(p=>p.d>=0&&p.d<=bw);
+    const [aL,bL]=fitLine(L), [aR,bR]=fitLine(R);
+    ctx.lineWidth=2.5; ctx.strokeStyle='#A34860'; ctx.beginPath(); ctx.moveTo(X(-bw),Y(aL-bL*bw)); ctx.lineTo(X(0),Y(aL)); ctx.stroke();
+    ctx.strokeStyle='#4F5D75'; ctx.beginPath(); ctx.moveTo(X(0),Y(aR)); ctx.lineTo(X(bw),Y(aR+bR*bw)); ctx.stroke();
+    label(ctx,'inside the mita',X(-95),40,'#A34860'); label(ctx,'outside',X(95),40,'#4F5D75','right');
+    statBox('rddStats',[['jump at the boundary',(aR-aL).toFixed(1)+' points'],['districts used',L.length+R.length],['inside, within bandwidth',L.length],['outside, within bandwidth',R.length]]);
+  }
+  $('rddBw').addEventListener('input',drawRDD); drawRDD();
+  chipQ('rddQ','rddF','alike','Yes. Far from the line, geography and history differ for reasons that have nothing to do with the mita. At the line, the only thing that changes is which side a village fell on.','The number of households and the ease of mapping do not decide what is comparable. Likeness on both sides does.');
+
+  // ---- V. IV: lottery number, service, earnings ----
+  function drawIV(){
+    const fs=parseInt($('ivFs').value,10); $('ivFsTxt').textContent=fs+' points more likely to serve';
+    const rf=-4.5;   // reduced form: earnings gap in percent for low numbers, held fixed
+    const cv=$('iv'), ctx=cv.getContext('2d'), W=cv.width,H=cv.height; ctx.clearRect(0,0,W,H);
+    const draw=(T,B,ylo,yhi,yl,low,high,col)=>{ ctx.strokeStyle='#D8C8A0'; ctx.strokeRect(60,T,W-80,H-T-B); const X=v=>60+(v-1)/364*(W-80), Y=v=>H-B-(v-ylo)/(yhi-ylo)*(H-T-B);
+      ctx.strokeStyle='#9A7B24'; ctx.setLineDash([6,6]); ctx.beginPath(); ctx.moveTo(X(195),T); ctx.lineTo(X(195),H-B); ctx.stroke(); ctx.setLineDash([]);
+      ctx.strokeStyle=col; ctx.lineWidth=3; ctx.beginPath(); ctx.moveTo(X(1),Y(low)); ctx.lineTo(X(195),Y(low)); ctx.moveTo(X(195),Y(high)); ctx.lineTo(X(365),Y(high)); ctx.stroke();
+      ctx.fillStyle='#6E5140'; ctx.font='17px Cormorant Garamond, serif'; ctx.textAlign='right'; ctx.textBaseline='middle'; ctx.fillText(ylo,54,Y(ylo)); ctx.fillText(yhi,54,Y(yhi)); ctx.save(); ctx.translate(14,(T+H-B)/2); ctx.rotate(-Math.PI/2); ctx.textAlign='center'; ctx.fillText(yl,0,0); ctx.restore(); return [X,Y]; };
+    const [X1,Y1]=draw(20,200,0,60,'% who served',20+fs,20,'#4F5D75'); label(ctx,'called up',X1(100),Y1(20+fs)-14,'#4F5D75','center'); label(ctx,'not called',X1(280),Y1(20)-14,'#4F5D75','center');
+    const [X2,Y2]=draw(200,48,-10,5,'earnings, % gap',rf,0,'#A34860'); label(ctx,'low numbers earn less',X2(100),Y2(rf)+14,'#A34860','center');
+    ctx.fillStyle='#6E5140'; ctx.textAlign='center'; ctx.textBaseline='top'; [1,100,195,300,365].forEach(v=>ctx.fillText(v,X2(v),H-42)); ctx.fillText('Lottery number, 1 to 365; ceiling at 195',W/2,H-22);
+    statBox('ivStats',[['first stage, points',fs],['reduced form, % earnings',rf.toFixed(1)],['IV estimate, % for those who served',(100*rf/fs).toFixed(0)]]);
+  }
+  $('ivFs').addEventListener('input',drawIV); drawIV();
+  chipQ('ivQ','ivF','school','Yes. Then the lottery reaches earnings by a second road, schooling, and the exclusion restriction fails. The IV estimate would mix the cost of service with the return to the extra schooling.','Imperfect compliance is expected and is what the first stage measures. Random draws are what make the instrument work; they do not break the design.');
+})();
+</script>
+</body>
+</html>
