@@ -239,14 +239,13 @@ footer .made{flex-basis:100%;text-align:center;font-size:.62rem;letter-spacing:.
           <tr><td>Total who served</td><td>35</td><td>20</td></tr>
         </tbody>
       </table></div>
-      <p>Only the third row differs between the two groups. Suppose serving costs each of those 15 men 30% of his income. Averaged over all 100 men in the low-number group, that is 15 × 30 ÷ 100 = 4.5% off the group average. The researcher sees the 15 and the 4.5. Dividing 4.5 by 0.15 gives back the 30. The 30 describes those 15 men, not every veteran.</p>
+      <p>Only the third row differs between the two groups. Serving costs each of those 15 men 15% of his income. Averaged over all 100 men in the low-number group, that is 15 × 15 ÷ 100 = 2.25% off the group average. The researcher sees the 15 and the 2.25. Dividing 2.25 by 0.15 gives back the 15. The 15% describes those men, not every veteran.</p>
     </div>
-    <div class="cell wide"><span class="tag">The assumption and the check</span><p>Two conditions. The instrument must move the treatment, which the first stage shows directly. The instrument must affect the outcome only through the treatment, and that condition cannot be tested; the authors argue for it from how the lottery worked. In the figure below, move the share of men the lottery moved and the loss each of them suffers: the gap between the groups changes with both, and the ratio returns the loss per mover.</p></div>
+    <div class="cell wide"><span class="tag">The assumption and the check</span><p>Two conditions. The instrument must move the treatment, which the first stage shows directly. The instrument must affect the outcome only through the treatment, and that condition cannot be tested; the authors argue for it from how the lottery worked. In the figure below, move the share of men the lottery moved: the gap between the groups shrinks as fewer men are moved, and the ratio returns the same 15% each time.</p></div>
   </div>
   <div class="fig">
-    <p class="aux">A mover is a man whose service the lottery decided: he served with a low number and would not have served with a high one. His loss is how much less he earns because he served, compared with what he would have earned otherwise, in percent of income. That loss is the effect being estimated. The sketch sets both quantities and shows what the data would then reveal.</p>
+    <p class="aux">A mover is a man whose service the lottery decided: he served with a low number and would not have served with a high one. The sketch fixes the cost of serving at 15% of income for each mover, Angrist's estimate, and lets the share of men moved vary.</p>
     <div class="row"><label for="ivFs">Men the lottery moved into service, per 100</label><input type="range" id="ivFs" min="5" max="40" value="15" step="1"><span class="aux" id="ivFsTxt">15</span></div>
-    <div class="row"><label for="ivC">True cost of serving for one of those men, % of income</label><input type="range" id="ivC" min="5" max="50" value="30" step="1"><span class="aux" id="ivCTxt">30</span></div>
     <canvas id="ivCv" width="1000" height="520" aria-label="Two groups of 100 men coloured by whether the lottery changed their service, with average income beneath"></canvas>
     <span class="aux">Left, 100 men with low numbers; right, 100 with high numbers. Dark: served regardless. Pale: never served. Rose: the men the lottery moved into service, present in both groups but serving only on the left. The bars show average income, with non-servers at 100.</span>
   </div>
@@ -345,7 +344,7 @@ footer .made{flex-basis:100%;text-align:center;font-size:.62rem;letter-spacing:.
 
   // ---- V. IV: two groups of 100, coloured by what the lottery changed ----
   function drawIV(){
-    const fs=parseInt($('ivFs').value,10), c=parseInt($('ivC').value,10); $('ivFsTxt').textContent=fs; $('ivCTxt').textContent=c;
+    const fs=parseInt($('ivFs').value,10), c=15; $('ivFsTxt').textContent=fs;
     const always=20, never=100-always-fs;
     const cv=$('ivCv'), ctx=cv.getContext('2d'), W=cv.width,H=cv.height; ctx.clearRect(0,0,W,H);
     const cell=26, gridW=10*cell; const gx=[90, W-90-gridW]; const gy=60;
@@ -357,12 +356,12 @@ footer .made{flex-basis:100%;text-align:center;font-size:.62rem;letter-spacing:.
         else { ctx.fillStyle=col[type]; ctx.fill(); ctx.strokeStyle='#9A7B24'; ctx.lineWidth=0.6; ctx.stroke(); } } });
     const incL=(always*(100-c)+fs*(100-c)+never*100)/100, incH=(always*(100-c)+fs*100+never*100)/100, gap=incH-incL;
     const by=gy+10*cell+40, bh=90; const scale=v=>(v-60)/40*bh;
-    [0,1].forEach(g=>{ const v=g?incH:incL; const x=gx[g]+gridW/2-60; ctx.fillStyle=g?'#9FB295':'#A34860'; ctx.fillRect(x,by+bh-scale(v),120,scale(v)); ctx.fillStyle='#2C1F14'; ctx.font='19px Cormorant Garamond, serif'; ctx.textAlign='center'; ctx.textBaseline='bottom'; ctx.fillText('average income '+v.toFixed(1),x+60,by+bh-scale(v)-6); });
+    [0,1].forEach(g=>{ const v=g?incH:incL; const x=gx[g]+gridW/2-60; ctx.fillStyle=g?'#9FB295':'#A34860'; ctx.fillRect(x,by+bh-scale(v),120,scale(v)); ctx.fillStyle='#2C1F14'; ctx.font='19px Cormorant Garamond, serif'; ctx.textAlign='center'; ctx.textBaseline='bottom'; ctx.fillText('average income '+v.toFixed(2),x+60,by+bh-scale(v)-6); });
     ctx.strokeStyle='#D8C8A0'; ctx.beginPath(); ctx.moveTo(60,by+bh); ctx.lineTo(W-60,by+bh); ctx.stroke();
-    ctx.fillStyle='#6E5140'; ctx.textAlign='center'; ctx.textBaseline='top'; ctx.fillText('gap between the groups = '+(fs/100).toFixed(2)+' × '+c+' = '+gap.toFixed(1)+' · divided by '+(fs/100).toFixed(2)+' gives '+c,W/2,by+bh+8);
-    statBox('ivStats',[['first stage: men moved per 100',fs],['reduced form: income gap between the groups, %',gap.toFixed(1)],['ratio: estimated cost of serving, %',(gap/(fs/100)).toFixed(0)],['true cost set by the slider, %',c]]);
+    ctx.fillStyle='#6E5140'; ctx.textAlign='center'; ctx.textBaseline='top'; ctx.fillText('gap between the groups = '+(fs/100).toFixed(2)+' × 15 = '+gap.toFixed(2)+' · divided by '+(fs/100).toFixed(2)+' gives 15',W/2,by+bh+8);
+    statBox('ivStats',[['first stage: men moved per 100',fs],['reduced form: income gap between the groups, %',gap.toFixed(2)],['ratio: estimated cost of serving, %',(gap/(fs/100)).toFixed(0)]]);
   }
-  $('ivFs').addEventListener('input',drawIV); $('ivC').addEventListener('input',drawIV); drawIV();
+  $('ivFs').addEventListener('input',drawIV); drawIV();
   chipQ('ivQ','ivF','school','Yes. The lottery would then reach earnings through schooling as well as through service, and the exclusion restriction would fail. The estimate would combine the cost of service with the return to the additional schooling.','Imperfect compliance is expected, and the first stage measures its extent. Random draws are the condition that makes the instrument valid.');
 })();
 </script>
