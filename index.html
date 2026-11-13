@@ -100,7 +100,8 @@ footer a{color:var(--rose);text-decoration:none;border-bottom:1px solid var(--tr
     <h1>Five Designs</h1>
     <div class="orn">✦ · ✦</div>
   </div>
-  <p class="aux">The map above is the first natural experiment: John Snow, Soho, 1854. The designs below are five ways of finding one.</p>
+  <p>In 1854 John Snow marked each cholera death in Soho on this map and found them concentrated around the Broad Street pump. The map suggested the cause; the proof came from south of the river. There, two water companies supplied the same streets, one drawing from the Thames below the sewer outfalls and one from upstream, and households had chosen their supplier years earlier for reasons unconnected with cholera. Snow compared the death rates of the two sets of customers as if a lottery had assigned the water. The comparison worked because the rule that assigned the supplier had nothing to do with the outcome.</p>
+  <p>The five designs below are five ways of finding such a rule. Each is told through the study the lecture uses, with the same three questions: who decided who was treated, what has to be assumed, and how the authors checked. The pictures are sketches of the logic, not the published data.</p>
   <div class="row">
     <a class="btn" href="#rct">Randomised trial</a><a class="btn" href="#did">Difference in differences</a><a class="btn" href="#scm">Synthetic control</a><a class="btn" href="#rdd">Regression discontinuity</a><a class="btn" href="#ivs">Instrumental variable</a>
   </div>
@@ -109,27 +110,27 @@ footer a{color:var(--rose);text-decoration:none;border-bottom:1px solid var(--tr
 <div class="node"><div class="stem"></div><div class="dot"></div><span class="tag">Design I · Randomised controlled trial</span></div>
 
 <section class="frame" id="rct" aria-label="Randomised controlled trial">
-  <span class="sign">Let a lottery choose</span>
+  <span class="sign">Assignment by lottery</span>
   <div class="grid">
-    <div class="cell wide"><span class="tag">The idea</span><p>Give the treatment to some and not to others, and let a coin decide who. Then the only thing that differs between the two groups is the treatment, so whatever differs afterwards was caused by the treatment.</p></div>
-    <div class="cell"><span class="tag">The question</span><p>Rural Rajasthan, 2004 to 2007. Would a reliable monthly immunisation camp get more children fully immunised, and would a small reward on top, a bag of lentils per visit and a set of plates on completion, get more still?</p></div>
-    <div class="cell"><span class="tag">Who decided who was treated</span><p>A lottery. 134 villages were drawn at random into three groups: camp only (30 villages), camp with rewards (30), and nothing (74). A village's poverty, remoteness or attitude to vaccines had no say in which group it joined.</p></div>
-    <div class="cell"><span class="tag">The comparison</span><p>The share of children fully immunised, group against group. No adjustment needed: the lottery already made the groups alike.</p></div>
-    <div class="cell"><span class="tag">What they found</span><p>About 6% fully immunised with nothing, 18% with a camp, 39% with a camp and rewards. A bag of lentils did more than the camp itself.</p></div>
-    <div class="cell wide"><span class="tag">The assumption, and the check</span><p>That the lottery was fair and villages stayed in their groups. The check is a balance table: before anything happened, the three groups should look the same on everything you can measure. Draw the lottery below again and again and the group averages barely move. Let villages choose for themselves and the keen ones take the camps.</p></div>
+    <div class="cell wide"><span class="tag">The idea</span><p>Some units receive the treatment and others do not, and a lottery decides which. The two groups then differ only in the treatment, so any later difference in outcomes is the effect of the treatment.</p></div>
+    <div class="cell"><span class="tag">The question</span><p>Rural Rajasthan, 2004 to 2007. Would a reliable monthly immunisation camp raise the share of children fully immunised, and would a small reward on top of the camp, a bag of lentils for each visit and a set of plates on completion, raise the share further?</p></div>
+    <div class="cell"><span class="tag">Who decided who was treated</span><p>A lottery. The authors drew 134 villages at random into three groups: a camp (30 villages), a camp with rewards (30 villages), and no intervention (74 villages). A village's poverty, remoteness, and attitude to vaccination had no bearing on its group.</p></div>
+    <div class="cell"><span class="tag">The comparison</span><p>The share of children fully immunised in each group. Because the lottery had already made the groups alike, the raw shares can be compared without adjustment.</p></div>
+    <div class="cell"><span class="tag">The finding</span><p>About 6% of children were fully immunised in the control villages, 18% in the camp villages, and 39% in the villages with a camp and rewards.</p></div>
+    <div class="cell wide"><span class="tag">The assumption and the check</span><p>The design assumes that the lottery was fair and that villages stayed in their assigned groups. The check is a balance table: before the camps opened, the three groups should look alike on household size, distance to a clinic, baseline immunisation, and other measured characteristics. In the sketch below, repeated lotteries leave the group averages close together, and self-selection by villages pulls them apart.</p></div>
   </div>
   <div class="fig">
     <div class="row"><button type="button" class="btn primary" id="rctDraw">Draw the lottery again</button><button type="button" class="btn" id="rctSelf" aria-pressed="false">Let villages choose instead</button></div>
     <canvas id="rctCv" width="1000" height="360" aria-label="Village groups and their baseline averages"></canvas>
-    <span class="aux">Sketch: 134 villages with a made-up baseline distance to the nearest clinic. Under the lottery the three groups' average distances agree; under self-selection the keen villages, which are nearer, take the camps.</span>
+    <span class="aux">Sketch: 134 villages with an invented baseline distance to the nearest clinic. Under the lottery the three group averages agree; under self-selection the nearer villages take the camps.</span>
   </div>
   <div class="stats" id="rctStats"></div>
   <div class="ask">
-    <div class="q">Why can the raw difference between the three shares be read as a cause here, when the regression on the previous page could not be?</div>
-    <div class="choices" id="rctQ"><button type="button" class="chip" data-v="lot">Because a lottery, not the villages, decided who got a camp</button><button type="button" class="chip" data-v="n">Because the sample is large</button><button type="button" class="chip" data-v="sig">Because the differences are statistically significant</button></div>
+    <div class="q">Why can the raw difference between the three shares be read as a causal effect here, when the regression on the previous page could not be?</div>
+    <div class="choices" id="rctQ"><button type="button" class="chip" data-v="lot">Because a lottery decided which villages received a camp</button><button type="button" class="chip" data-v="n">Because the sample is large</button><button type="button" class="chip" data-v="sig">Because the differences are statistically significant</button></div>
     <div class="fb" id="rctF"></div>
   </div>
-  <p class="ref">Banerjee, Duflo, Glennerster and Kothari, BMJ 2010; 340: c2220.</p>
+  <p class="ref">Banerjee, Duflo, Glennerster, and Kothari, BMJ 2010; 340: c2220.</p>
 </section>
 
 <div class="node"><div class="stem"></div><div class="dot"></div><span class="tag">Design II · Difference in differences</span></div>
@@ -137,22 +138,22 @@ footer a{color:var(--rose);text-decoration:none;border-bottom:1px solid var(--tr
 <section class="frame" id="did" aria-label="Difference in differences">
   <span class="sign">Two places, before and after</span>
   <div class="grid">
-    <div class="cell wide"><span class="tag">The idea</span><p>Two places, one gets a policy. Do not compare them afterwards, since they were never the same. Compare how much each one changed. The untreated place shows what would have happened anyway, and the extra change in the treated place is the effect.</p></div>
-    <div class="cell"><span class="tag">The question</span><p>Did fracking bring people to the places that allowed it? Pennsylvania drilled the Marcellus shale from the late 2000s. New York, on the same shale, banned drilling.</p></div>
-    <div class="cell"><span class="tag">Who decided who was treated</span><p>Two state governments, for reasons of politics and law. The claim the design rests on is that the decision had nothing to do with where each state's population was already heading.</p></div>
-    <div class="cell"><span class="tag">The comparison</span><p>Population, 2000 to 2020. Pennsylvania's change after drilling began, minus New York's change over the same years.</p></div>
-    <div class="cell"><span class="tag">What was found</span><p>A Land Economy MPhil dissertation (Faulk, 2022) asked whether the fracking counties grew relative to their neighbours over the state line. The answer is the gap that opens after drilling starts, over and above the gap that was already there.</p></div>
-    <div class="cell wide"><span class="tag">The assumption, and the check</span><p>Parallel trends: without fracking, the two lines would have kept moving together. The only evidence is the years before drilling. If the lines run side by side until the policy and part afterwards, believe the gap. If they were already parting, the gap proves nothing. Drag the slider to give Pennsylvania a trend of its own before 2008 and watch the estimate drift while the true effect stays put.</p></div>
+    <div class="cell wide"><span class="tag">The idea</span><p>One of two places receives a policy. The two were never alike, so the design compares the change in each place rather than the places themselves. The change in the untreated place stands for what would have happened without the policy, and the additional change in the treated place is the effect.</p></div>
+    <div class="cell"><span class="tag">The question</span><p>Did fracking bring people to the places that allowed it? Pennsylvania drilled the Marcellus shale from the late 2000s. New York, on the same shale, imposed a moratorium and then a ban.</p></div>
+    <div class="cell"><span class="tag">Who decided who was treated</span><p>Two state governments, for reasons of politics and law. The design rests on the claim that those decisions were unrelated to where each state's population was already heading.</p></div>
+    <div class="cell"><span class="tag">The comparison</span><p>Population in the two states from 2000 to 2020. The change in Pennsylvania after drilling began, minus the change in New York over the same years.</p></div>
+    <div class="cell"><span class="tag">The finding</span><p>A Land Economy MPhil dissertation (Faulk, 2022) used this comparison to ask whether the fracking counties grew relative to their neighbours across the state line. The estimate is the gap that opens after drilling begins, over and above the gap that existed before.</p></div>
+    <div class="cell wide"><span class="tag">The assumption and the check</span><p>Parallel trends: without fracking, the two populations would have continued to move together. The only evidence is the years before drilling. Lines that run side by side until the policy and separate afterwards support the design; lines that were already separating do not. Drag the slider to give Pennsylvania a trend of its own before 2008 and compare the estimate with the true effect in the sketch.</p></div>
   </div>
   <div class="fig">
     <div class="row"><label for="didPre">Pre-period divergence</label><input type="range" id="didPre" min="0" max="10" value="0" step="1"></div>
     <canvas id="didCv" width="1000" height="380" aria-label="Population index in two states, before and after drilling"></canvas>
-    <span class="aux">Sketch: population index, 2000 = 100, drilling from 2008 marked. The dashed line is the counterfactual Pennsylvania the design assumes: Pennsylvania's level, New York's trend.</span>
+    <span class="aux">Sketch: population index, 2000 = 100, with drilling from 2008. The dashed line is the counterfactual Pennsylvania the design assumes, Pennsylvania's level with New York's trend.</span>
   </div>
   <div class="stats" id="didStats"></div>
   <div class="ask">
     <div class="q">Which observation would most damage this design?</div>
-    <div class="choices" id="didQ"><button type="button" class="chip" data-v="pre">Pennsylvania was already growing faster than New York in 2003 to 2007</button><button type="button" class="chip" data-v="level">Pennsylvania had more people than New York in 2000</button><button type="button" class="chip" data-v="post">New York grew after 2008</button></div>
+    <div class="choices" id="didQ"><button type="button" class="chip" data-v="pre">Pennsylvania was already growing faster than New York from 2003 to 2007</button><button type="button" class="chip" data-v="level">Pennsylvania had more people than New York in 2000</button><button type="button" class="chip" data-v="post">New York grew after 2008</button></div>
     <div class="fb" id="didF"></div>
   </div>
   <p class="ref">Faulk, 2022, MPhil dissertation, Department of Land Economy.</p>
@@ -161,49 +162,49 @@ footer a{color:var(--rose);text-decoration:none;border-bottom:1px solid var(--tr
 <div class="node"><div class="stem"></div><div class="dot"></div><span class="tag">Design III · Synthetic control</span></div>
 
 <section class="frame" id="scm" aria-label="Synthetic control">
-  <span class="sign">Build the control from parts</span>
+  <span class="sign">A control built from parts</span>
   <div class="grid">
-    <div class="cell wide"><span class="tag">The idea</span><p>No single place is a twin of California. So build one: blend other states in the proportions that make the blend behave like California before the law, then watch what the blend does after. The blend is the California that never passed the law.</p></div>
-    <div class="cell"><span class="tag">The question</span><p>Did Proposition 99 of 1988, a 25 cent per pack tobacco tax with the money spent on anti-smoking campaigns, cut cigarette sales in California?</p></div>
-    <div class="cell"><span class="tag">Who decided who was treated</span><p>California's voters, in a referendum. No other state did the same, so there is one treated state and no ready-made comparison.</p></div>
-    <div class="cell"><span class="tag">The comparison</span><p>California against synthetic California: a blend of Utah, Nevada, Montana, Colorado and Connecticut, weighted so that before 1988 the blend's sales matched California's year by year. After 1988 the blend carries on as California would have.</p></div>
-    <div class="cell"><span class="tag">What they found</span><p>After 1988 California's sales fell away from the blend. By 2000 they were about 26 packs per person per year lower, roughly a quarter below what the blend says they would have been.</p></div>
-    <div class="cell wide"><span class="tag">The assumption, and the check</span><p>That the blend matched California closely before the law and that the donor states did nothing similar afterwards. The check is a placebo: pretend each untreated state passed the law, build its blend, and see whether California's gap stands out among the pretend ones. Click a donor below to see its share of the blend.</p></div>
+    <div class="cell wide"><span class="tag">The idea</span><p>No single state resembles California closely enough to serve as its control. A weighted average of other states can be chosen so that, before the policy, the average tracks California year by year. After the policy, the average continues as California would have done without the law.</p></div>
+    <div class="cell"><span class="tag">The question</span><p>Did Proposition 99 of 1988, a 25 cent per pack tobacco tax with the revenue spent on anti-smoking campaigns, reduce cigarette sales in California?</p></div>
+    <div class="cell"><span class="tag">Who decided who was treated</span><p>California's voters, in a referendum. No other state adopted a comparable measure at the time, so there is one treated state and no ready comparison.</p></div>
+    <div class="cell"><span class="tag">The comparison</span><p>California against a synthetic California: a weighted average of Utah, Nevada, Montana, Colorado, and Connecticut, with the weights chosen so that the average matched California's sales before 1988.</p></div>
+    <div class="cell"><span class="tag">The finding</span><p>After 1988 California's sales fell below the synthetic line. By 2000, per capita sales were about 26 packs a year lower than the synthetic California, roughly a quarter below the counterfactual.</p></div>
+    <div class="cell wide"><span class="tag">The assumption and the check</span><p>The design assumes a close match before 1988 and no comparable tobacco policy in the donor states afterwards. The check is a placebo test: the authors built a synthetic version of each untreated state in turn, as if that state had passed the law, and asked whether California's gap was unusually large among them. Click a donor below for its share of the synthetic California.</p></div>
   </div>
   <div class="fig">
     <canvas id="scmCv" width="1000" height="380" aria-label="California against synthetic California, cigarette sales"></canvas>
-    <span class="aux">Sketch of the paper's figure: packs per head, 1970 to 2000, Proposition 99 marked in 1988. The dashed line is the synthetic California built from the five donor states and their published weights.</span>
+    <span class="aux">Sketch of the paper's figure: packs per head, 1970 to 2000, with Proposition 99 in 1988. The dashed line is the synthetic California built from the five donor states and their published weights.</span>
     <div class="choices" id="scmDonors"></div>
-    <div class="aux" id="scmNote">Each donor's weight is the share of the synthetic California that state supplies. Together the five make one whole.</div>
+    <div class="aux" id="scmNote">Each weight is the share of the synthetic California that the state supplies. The five weights sum to one.</div>
   </div>
   <div class="ask">
     <div class="q">What would make the synthetic control untrustworthy?</div>
-    <div class="choices" id="scmQ"><button type="button" class="chip" data-v="fit">The weighted average fails to track California before 1988</button><button type="button" class="chip" data-v="five">Only five states get positive weight</button><button type="button" class="chip" data-v="sum">The weights sum to one</button></div>
+    <div class="choices" id="scmQ"><button type="button" class="chip" data-v="fit">The weighted average fails to track California before 1988</button><button type="button" class="chip" data-v="five">Only five states receive positive weight</button><button type="button" class="chip" data-v="sum">The weights sum to one</button></div>
     <div class="fb" id="scmF"></div>
   </div>
-  <p class="ref">Abadie, Diamond and Hainmueller, Journal of the American Statistical Association 2010; 105(490): 493 to 505.</p>
+  <p class="ref">Abadie, Diamond, and Hainmueller, Journal of the American Statistical Association 2010; 105(490): 493 to 505.</p>
 </section>
 
 <div class="node"><div class="stem"></div><div class="dot"></div><span class="tag">Design IV · Regression discontinuity</span></div>
 
 <section class="frame" id="rdd" aria-label="Regression discontinuity">
-  <span class="sign">Compare either side of a line</span>
+  <span class="sign">Either side of a line</span>
   <div class="grid">
-    <div class="cell wide"><span class="tag">The idea</span><p>A rule draws a line, and treatment switches at the line. People just either side are the same people in every way but one. Compare them, and only them.</p></div>
-    <div class="cell"><span class="tag">The question</span><p>Does a colonial institution leave a mark centuries later? The mita, 1573 to 1812, forced villages in part of Peru and Bolivia to send a seventh of their men to the silver and mercury mines.</p></div>
-    <div class="cell"><span class="tag">Who decided who was treated</span><p>The Spanish crown drew a boundary. Villages just inside sent men; villages just outside did not. The land, the people and the climate were the same on both sides.</p></div>
-    <div class="cell"><span class="tag">The comparison</span><p>Households today, just inside the old line against just outside. Only places near the line count, because only there is everything else alike.</p></div>
-    <div class="cell"><span class="tag">What they found</span><p>Inside the old line, household consumption is about 25% lower today and stunting among children about 6 percentage points higher. The reasons found were weaker land rights and worse roads inside.</p></div>
-    <div class="cell wide"><span class="tag">The assumption, and the check</span><p>That nothing else changes at the line: no one moved across to escape, no other policy switches there. The checks are whether households bunch on one side, and whether things the mita could not have caused, such as elevation and rainfall, are the same on both sides. Narrow the bandwidth below and watch the estimate hold while the sample shrinks.</p></div>
+    <div class="cell wide"><span class="tag">The idea</span><p>A rule draws a line, and treatment switches at the line. Units just on either side are alike in every respect except the treatment, so a comparison restricted to the neighbourhood of the line estimates the effect.</p></div>
+    <div class="cell"><span class="tag">The question</span><p>Does a colonial institution leave a mark centuries later? The mita, from 1573 to 1812, required villages in part of Peru and Bolivia to send a seventh of their adult men to the silver mines of Potosí and the mercury mines of Huancavelica.</p></div>
+    <div class="cell"><span class="tag">Who decided who was treated</span><p>The Spanish crown drew the boundary of the catchment. Villages just inside sent men to the mines and villages just outside did not. The land, the people, and the climate were the same on both sides.</p></div>
+    <div class="cell"><span class="tag">The comparison</span><p>Households today, just inside the old boundary against just outside. Distance to the boundary is the running variable, and only households close to the line enter the comparison.</p></div>
+    <div class="cell"><span class="tag">The finding</span><p>Household consumption inside the former catchment is about 25% lower today, and stunting among children about 6 percentage points higher. The channels identified were weaker land tenure and poorer roads inside the line.</p></div>
+    <div class="cell wide"><span class="tag">The assumption and the check</span><p>The design assumes that nothing else changes at the line: households did not move across in anticipation, and no other policy switches there. The checks are a density test, for bunching of households on one side, and balance tests on characteristics the mita could not have caused, such as elevation and rainfall. Narrow the bandwidth below and compare the estimate with the sample size.</p></div>
   </div>
   <div class="fig">
     <div class="row"><label for="rddBw">Bandwidth, km</label><input type="range" id="rddBw" min="10" max="100" value="50" step="5"><span class="aux" id="rddBwTxt">50 km</span></div>
     <canvas id="rddCv" width="1000" height="380" aria-label="Consumption against distance to the mita boundary"></canvas>
-    <span class="aux">Sketch: districts by distance to the boundary, inside to the left of zero, with a made-up consumption index. The lines are fitted separately on each side within the bandwidth; the gap at zero is the estimate.</span>
+    <span class="aux">Sketch: districts by distance to the boundary, inside to the left of zero, with an invented consumption index. The lines are fitted separately on each side within the bandwidth, and the gap at zero is the estimate.</span>
   </div>
   <div class="stats" id="rddStats"></div>
   <div class="ask">
-    <div class="q">Why compare only places near the boundary, when the whole catchment was treated?</div>
+    <div class="q">Why does the comparison use only places near the boundary, when the whole catchment was treated?</div>
     <div class="choices" id="rddQ"><button type="button" class="chip" data-v="alike">Because only near the line are the two sides alike in everything but the mita</button><button type="button" class="chip" data-v="more">Because there are more households near the line</button><button type="button" class="chip" data-v="map">Because the boundary is easier to map there</button></div>
     <div class="fb" id="rddF"></div>
   </div>
@@ -213,14 +214,14 @@ footer a{color:var(--rose);text-decoration:none;border-bottom:1px solid var(--tr
 <div class="node"><div class="stem"></div><div class="dot"></div><span class="tag">Design V · Instrumental variable</span></div>
 
 <section class="frame" id="ivs" aria-label="Instrumental variable">
-  <span class="sign">Find a lever that moves only the treatment</span>
+  <span class="sign">A lever that moves only the treatment</span>
   <div class="grid">
-    <div class="cell wide"><span class="tag">The idea</span><p>You cannot randomise the treatment, but sometimes something random pushes people towards the treatment. Follow the push: see how much more often the pushed group got treated, see how much their outcome moved, and divide the second by the first.</p></div>
-    <div class="cell"><span class="tag">The question</span><p>What did serving in the Vietnam era do to men's later earnings? Veterans and non-veterans cannot simply be compared, because the men who served were different to begin with.</p></div>
-    <div class="cell"><span class="tag">Who decided who was treated</span><p>Partly a lottery. Birthdays were drawn and numbered 1 to 365, and low numbers were called first. A low number did not force a man to serve, since many were exempt and many volunteered, but a low number made serving much more likely.</p></div>
-    <div class="cell"><span class="tag">The comparison</span><p>Two steps. How much more likely low-number men were to serve. How much less low-number men earned years later. The effect of serving is the second divided by the first, because a birthday number can only have reached earnings by way of service.</p></div>
-    <div class="cell"><span class="tag">What they found</span><p>White veterans earned about 15% less in the early 1980s, roughly 3,500 dollars a year at the time, than they would have without serving.</p></div>
-    <div class="cell wide"><span class="tag">The assumption, and the check</span><p>Two things. The push must really move the treatment, which the first step shows. And the push must reach the outcome only through the treatment: a birthday number cannot change pay except by sending a man to the army. That second part cannot be tested, only argued. Drag the slider to see how a weak push inflates the estimate from the same earnings gap.</p></div>
+    <div class="cell wide"><span class="tag">The idea</span><p>The treatment cannot be randomised, but something random pushes some people towards the treatment. The design measures how much the push raised the probability of treatment and how much the push moved the outcome, and divides the second by the first.</p></div>
+    <div class="cell"><span class="tag">The question</span><p>What did military service in the Vietnam era do to men's later earnings? Veterans and non-veterans cannot simply be compared, because the men who served differed from those who did not in health, schooling, and prospects.</p></div>
+    <div class="cell"><span class="tag">Who decided who was treated</span><p>Partly a lottery. From 1970, birthdays were drawn and numbered from 1 to 365, and men with low numbers were called first. A low number did not determine service, since many low-number men were exempt and many high-number men volunteered, but a low number made service much more likely.</p></div>
+    <div class="cell"><span class="tag">The comparison</span><p>Two stages. The first measures how much more likely a man with a low number was to serve. The second measures how much lower the earnings of low-number men were years later. The effect of service is the second divided by the first, because a lottery number can reach earnings only through service.</p></div>
+    <div class="cell"><span class="tag">The finding</span><p>White veterans earned about 15% less in the early 1980s than they would have without serving, roughly 3,500 dollars a year at the time.</p></div>
+    <div class="cell wide"><span class="tag">The assumption and the check</span><p>Two conditions. The instrument must move the treatment, which the first stage shows directly. The instrument must affect the outcome only through the treatment, and that condition cannot be tested; the authors argue for it from how the lottery worked. Drag the slider to see how a weak first stage inflates the estimate from the same earnings gap.</p></div>
   </div>
   <div class="fig">
     <div class="row"><label for="ivFs">First stage</label><input type="range" id="ivFs" min="5" max="40" value="15" step="1"><span class="aux" id="ivFsTxt">15 points more likely to serve</span></div>
@@ -229,30 +230,30 @@ footer a{color:var(--rose);text-decoration:none;border-bottom:1px solid var(--tr
   </div>
   <div class="stats" id="ivStats"></div>
   <div class="ask">
-    <div class="q">Which of these would break the lottery as an instrument?</div>
+    <div class="q">Which of these would invalidate the lottery as an instrument?</div>
     <div class="choices" id="ivQ"><button type="button" class="chip" data-v="school">Men with low numbers stayed in university to avoid the draft, and the extra schooling raised their pay</button><button type="button" class="chip" data-v="many">Many men with low numbers never served</button><button type="button" class="chip" data-v="rand">The numbers were drawn at random</button></div>
     <div class="fb" id="ivF"></div>
   </div>
   <p class="ref">Angrist, American Economic Review 1990; 80(3): 313 to 336.</p>
 </section>
 
-<div class="node"><div class="stem"></div><div class="dot"></div><span class="tag">The five, side by side</span></div>
+<div class="node"><div class="stem"></div><div class="dot"></div><span class="tag">The five designs compared</span></div>
 
 <section class="frame" aria-label="Summary">
-  <span class="sign">Who was the host</span>
+  <span class="sign">Assignment, assumption, check</span>
   <div style="overflow-x:auto;max-width:100%">
   <table>
     <thead><tr><th>Design</th><th>Who decided who was treated</th><th>What has to be assumed</th><th>How to check</th></tr></thead>
     <tbody>
-      <tr><td>Randomised trial</td><td>A lottery run by the researchers</td><td>The lottery was fair and people stayed in their groups</td><td>Balance table before treatment</td></tr>
-      <tr><td>Difference in differences</td><td>A policy that hit one group at one time</td><td>Parallel trends without the policy</td><td>Pre-period trends, placebo dates</td></tr>
-      <tr><td>Synthetic control</td><td>A policy in one unit with many untreated units</td><td>The weighted donors track the unit before and would have after</td><td>Pre-period fit, placebo units</td></tr>
-      <tr><td>Regression discontinuity</td><td>A rule with a threshold or a boundary</td><td>Nothing else changes at the threshold; no sorting across the line</td><td>Density test, balance at the threshold</td></tr>
-      <tr><td>Instrumental variable</td><td>Something that nudged treatment for an unrelated reason</td><td>The nudge moves the treatment and touches the outcome only through the treatment</td><td>First-stage strength; the exclusion is argued, not tested</td></tr>
+      <tr><td>Randomised trial</td><td>A lottery run by the researchers</td><td>The lottery was fair and units stayed in their groups</td><td>Balance table before treatment</td></tr>
+      <tr><td>Difference in differences</td><td>A policy that reached one group at one time</td><td>Parallel trends without the policy</td><td>Pre-period trends, placebo dates</td></tr>
+      <tr><td>Synthetic control</td><td>A policy in one unit, with many untreated units</td><td>The weighted donors track the unit before the policy and would have tracked it after</td><td>Pre-period fit, placebo units</td></tr>
+      <tr><td>Regression discontinuity</td><td>A rule with a threshold or a boundary</td><td>Nothing else changes at the threshold, and no sorting across the line</td><td>Density test, balance at the threshold</td></tr>
+      <tr><td>Instrumental variable</td><td>A random push towards the treatment</td><td>The push moves the treatment and reaches the outcome only through the treatment</td><td>First-stage strength; the exclusion is argued, not tested</td></tr>
     </tbody>
   </table>
   </div>
-  <div class="closing"><div class="quote">None of the five lets the data decide. Each begins by finding out who the host was, the lottery, the legislature, the referendum, the colonial surveyor, the draft board, and then asks whether the host's rule could have reached the outcome by any other road. A regression table answers the second question only after the first has been settled.</div></div>
+  <div class="closing"><div class="quote">Each design begins by establishing who decided who was treated: the researchers' lottery, a legislature, a referendum, a colonial boundary, or a draft board. The regression that follows estimates the effect only once that question has been answered.</div></div>
 </section>
 
 <footer><span><a href="https://jerchenn.github.io/monty-hall/">Monty Hall</a></span><span class="orn">✦</span><span><a href="https://jerchenn.github.io/orchard/">Orchard Census</a></span><span class="orn">✦</span><span><a href="https://jerchenn.github.io/stata/">The Do-File</a></span><span class="orn">✦</span><span>Five Designs</span></footer>
@@ -293,7 +294,7 @@ footer a{color:var(--rose);text-decoration:none;border-bottom:1px solid var(--tr
   }
   $('rctDraw').addEventListener('click',()=>{ selfSelect=false; $('rctSelf').setAttribute('aria-pressed','false'); assign(); drawRCT(); });
   $('rctSelf').addEventListener('click',()=>{ selfSelect=!selfSelect; $('rctSelf').setAttribute('aria-pressed',String(selfSelect)); assign(); drawRCT(); });
-  chipQ('rctQ','rctF','lot','Yes. The lottery is a host who knows nothing about the villages, so the groups differ only in the treatment, and the raw comparison is the effect.','Size and significance tell you the difference is not noise. They say nothing about whether the groups were alike to begin with. Only the lottery does that.');
+  chipQ('rctQ','rctF','lot','Yes. The lottery assigned the camps without regard to the villages, so the groups differ only in the treatment, and the raw comparison estimates the effect.','Sample size and significance show that the difference is unlikely to be noise. Neither shows that the groups were alike to begin with; the lottery does that.');
   assign(); drawRCT();
 
   // ---- II. DiD: two states, population index ----
@@ -311,7 +312,7 @@ footer a{color:var(--rose);text-decoration:none;border-bottom:1px solid var(--tr
     statBox('didStats',[['DiD estimate, index points',naive.toFixed(1)],['true policy effect in the sketch',truth.toFixed(1)],['pre-2008 divergence per year',pre.toFixed(1)]]);
   }
   $('didPre').addEventListener('input',drawDID); drawDID();
-  chipQ('didQ','didF','pre','Yes. Diverging trends before the policy mean New York is not a good stand-in for Pennsylvania without fracking, and the gap after 2008 mixes the policy with the old trend.','Different levels are fine, since the design compares changes. New York growing after 2008 is fine too, since the design subtracts that growth.');
+  chipQ('didQ','didF','pre','Yes. Trends that diverged before the policy mean that New York cannot stand in for Pennsylvania without fracking, and the gap after 2008 combines the policy with the earlier trend.','A difference in levels does not matter, since the design compares changes. Growth in New York after 2008 does not matter either, since the design subtracts that growth.');
 
   // ---- III. SCM: California against synthetic, sketch of the figure ----
   const donors=[['Utah',0.334],['Nevada',0.234],['Montana',0.199],['Colorado',0.164],['Connecticut',0.069]];
@@ -327,8 +328,8 @@ footer a{color:var(--rose);text-decoration:none;border-bottom:1px solid var(--tr
     ctx.strokeStyle='#637040'; ctx.lineWidth=2; ctx.beginPath(); ctx.moveTo(X(2000)-40,Y(cal[30])); ctx.lineTo(X(2000)-40,Y(synth[30])); ctx.stroke(); label(ctx,'gap',X(2000)-46,(Y(cal[30])+Y(synth[30]))/2,'#637040','right');
   }
   drawSCM();
-  donors.forEach(([n,w])=>{ const b=document.createElement('button'); b.type='button'; b.className='chip'; b.textContent=n+' '+w.toFixed(3); b.addEventListener('click',()=>{ [...$('scmDonors').children].forEach(x=>x.setAttribute('aria-pressed','false')); b.setAttribute('aria-pressed','true'); $('scmNote').textContent=n+' supplies '+(100*w).toFixed(1)+'% of synthetic California. The other '+(100-100*w).toFixed(1)+'% comes from the remaining four donors. States with no weight were too unlike California before 1988 to help.'; }); $('scmDonors').appendChild(b); });
-  chipQ('scmQ','scmF','fit','Yes. If the donors cannot reproduce California before the law, there is no reason to believe they reproduce the California that never passed the law.','Few donors with positive weight is normal, and the weights sum to one by construction. Neither is a flaw.');
+  donors.forEach(([n,w])=>{ const b=document.createElement('button'); b.type='button'; b.className='chip'; b.textContent=n+' '+w.toFixed(3); b.addEventListener('click',()=>{ [...$('scmDonors').children].forEach(x=>x.setAttribute('aria-pressed','false')); b.setAttribute('aria-pressed','true'); $('scmNote').textContent=n+' supplies '+(100*w).toFixed(1)+'% of the synthetic California, and the remaining four donors supply '+(100-100*w).toFixed(1)+'%. States with zero weight did not improve the match before 1988.'; }); $('scmDonors').appendChild(b); });
+  chipQ('scmQ','scmF','fit','Yes. If the donors cannot reproduce California before the law, there is no reason to expect them to reproduce the California that never passed the law.','A small number of donors with positive weight is usual, and the weights sum to one by construction. Neither is a flaw.');
 
   // ---- IV. RDD: districts by distance to the mita boundary ----
   const districts=Array.from({length:420},()=>{ const d=-100+200*srand(); const inside=d<0; return {d,y:100-0.08*d+(inside?-25:0)+6*gauss(srand)}; });
@@ -347,7 +348,7 @@ footer a{color:var(--rose);text-decoration:none;border-bottom:1px solid var(--tr
     statBox('rddStats',[['jump at the boundary',(aR-aL).toFixed(1)+' points'],['districts used',L.length+R.length],['inside, within bandwidth',L.length],['outside, within bandwidth',R.length]]);
   }
   $('rddBw').addEventListener('input',drawRDD); drawRDD();
-  chipQ('rddQ','rddF','alike','Yes. Far from the line, geography and history differ for reasons that have nothing to do with the mita. At the line, the only thing that changes is which side a village fell on.','The number of households and the ease of mapping do not decide what is comparable. Likeness on both sides does.');
+  chipQ('rddQ','rddF','alike','Yes. Far from the line, geography and history differ for reasons unrelated to the mita. At the line, the only difference is the side on which a village fell.','The number of households and the ease of mapping do not decide what is comparable. Likeness on the two sides does.');
 
   // ---- V. IV: lottery number, service, earnings ----
   function drawIV(){
@@ -364,7 +365,7 @@ footer a{color:var(--rose);text-decoration:none;border-bottom:1px solid var(--tr
     statBox('ivStats',[['first stage, points',fs],['reduced form, % earnings',rf.toFixed(1)],['IV estimate, % for those who served',(100*rf/fs).toFixed(0)]]);
   }
   $('ivFs').addEventListener('input',drawIV); drawIV();
-  chipQ('ivQ','ivF','school','Yes. Then the lottery reaches earnings by a second road, schooling, and the exclusion restriction fails. The IV estimate would mix the cost of service with the return to the extra schooling.','Imperfect compliance is expected and is what the first stage measures. Random draws are what make the instrument work; they do not break the design.');
+  chipQ('ivQ','ivF','school','Yes. The lottery would then reach earnings through schooling as well as through service, and the exclusion restriction would fail. The estimate would combine the cost of service with the return to the additional schooling.','Imperfect compliance is expected, and the first stage measures it. Random draws are the condition that makes the instrument valid.');
 })();
 </script>
 </body>
