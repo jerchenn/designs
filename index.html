@@ -124,14 +124,12 @@ footer a{color:var(--rose);text-decoration:none;border-bottom:1px solid var(--tr
     <div class="cell"><span class="tag">Who decided who was treated</span><p>A lottery. The authors drew 134 villages at random into three groups: a camp (30 villages), a camp with rewards (30 villages), and no intervention (74 villages). A village's poverty, remoteness, and attitude to vaccination had no bearing on its group.</p></div>
     <div class="cell"><span class="tag">The comparison</span><p>The share of children fully immunised in each group. Because the lottery had already made the groups alike, the raw shares can be compared without adjustment.</p></div>
     <div class="cell"><span class="tag">The finding</span><p>About 6% of children were fully immunised in the control villages, 18% in the camp villages, and 39% in the villages with a camp and rewards.</p></div>
-    <div class="cell wide"><span class="tag">The assumption and the check</span><p>The design assumes that the lottery was fair and that villages stayed in their assigned groups. The check is a balance table: before the camps opened, the three groups should look alike on household size, distance to a clinic, baseline immunisation, and other measured characteristics. In the sketch below, repeated lotteries leave the group averages close together, and self-selection by villages pulls them apart.</p></div>
+    <div class="cell wide"><span class="tag">The assumption and the check</span><p>The design assumes that the lottery was fair and that villages stayed in their assigned groups. The check is a balance table: before the camps opened, the three groups should look alike on household size, distance to a clinic, baseline immunisation, and other measured characteristics.</p></div>
   </div>
   <div class="fig">
-    <div class="row"><button type="button" class="btn primary" id="rctDraw">Draw the lottery again</button><button type="button" class="btn" id="rctSelf" aria-pressed="false">Let villages choose instead</button></div>
-    <canvas id="rctCv" width="1000" height="360" aria-label="Village groups and their baseline averages"></canvas>
-    <span class="aux">Sketch: 134 villages with an invented baseline distance to the nearest clinic. Under the lottery the three group averages agree; under self-selection the nearer villages take the camps.</span>
+    <img class="figimg" src="img/bmj.webp" alt="Bar chart: share of children fully immunised in control villages, camp villages, camp and incentive villages, and villages neighbouring each, with confidence intervals">
+    <p class="aux">Fully immunised, by arm, with 95% confidence intervals. The two right-hand bars are villages within six kilometres of a camp, which also gained. Banerjee, Duflo, Glennerster, and Kothari, 2010.</p>
   </div>
-  <div class="stats" id="rctStats"></div>
   <div class="ask">
     <div class="q">Why can the raw difference between the three shares be read as a causal effect here, when the regression on the previous page could not be?</div>
     <div class="choices" id="rctQ"><button type="button" class="chip" data-v="lot">Because a lottery decided which villages received a camp</button><button type="button" class="chip" data-v="n">Because the sample is large</button><button type="button" class="chip" data-v="sig">Because the differences are statistically significant</button></div>
@@ -151,6 +149,10 @@ footer a{color:var(--rose);text-decoration:none;border-bottom:1px solid var(--tr
     <div class="cell"><span class="tag">The comparison</span><p>Population in the two states from 2000 to 2020. The change in Pennsylvania after drilling began, minus the change in New York over the same years.</p></div>
     <div class="cell"><span class="tag">The finding</span><p>A Land Economy MPhil dissertation (Faulk, 2022) used this comparison to ask whether the fracking counties grew relative to their neighbours across the state line. The estimate is the gap that opens after drilling begins, over and above the gap that existed before.</p></div>
     <div class="cell wide"><span class="tag">The assumption and the check</span><p>Parallel trends: without fracking, the two populations would have continued to move together. The only evidence is the years before drilling. Lines that run side by side until the policy and separate afterwards support the design; lines that were already separating do not. Drag the slider to give Pennsylvania a trend of its own before 2008 and compare the estimate with the true effect in the sketch.</p></div>
+  </div>
+  <div class="fig">
+    <img class="figimg" src="img/faulk.webp" alt="Population in New York and Pennsylvania counties, 2000 to 2020, with 2008 marked">
+    <p class="aux">Population in New York and Pennsylvania counties, 2000 to 2020, with drilling from 2008. Faulk, 2022.</p>
   </div>
   <div class="fig">
     <div class="row"><label for="didPre">Pre-period divergence</label><input type="range" id="didPre" min="0" max="10" value="0" step="1"></div>
@@ -174,13 +176,13 @@ footer a{color:var(--rose);text-decoration:none;border-bottom:1px solid var(--tr
     <div class="cell wide"><span class="tag">The idea</span><p>No single state resembles California closely enough to serve as its control. A weighted average of other states can be chosen so that, before the policy, the average tracks California year by year. After the policy, the average continues as California would have done without the law.</p></div>
     <div class="cell"><span class="tag">The question</span><p>Did Proposition 99 of 1988, a 25 cent per pack tobacco tax with the revenue spent on anti-smoking campaigns, reduce cigarette sales in California?</p></div>
     <div class="cell"><span class="tag">Who decided who was treated</span><p>California's voters, in a referendum. No other state adopted a comparable measure at the time, so there is one treated state and no ready comparison.</p></div>
-    <div class="cell"><span class="tag">The comparison</span><p>California against a synthetic California: a weighted average of Utah, Nevada, Montana, Colorado, and Connecticut, with the weights chosen so that the average matched California's sales before 1988.</p></div>
+    <div class="cell"><span class="tag">The comparison</span><p>The rest of the United States is the obvious control and fails: its sales were already on a different path before 1988. The synthetic California is a weighted average of Utah, Nevada, Montana, Colorado, and Connecticut, with weights chosen so that the average matched California's sales year by year before 1988.</p></div>
     <div class="cell"><span class="tag">The finding</span><p>After 1988 California's sales fell below the synthetic line. By 2000, per capita sales were about 26 packs a year lower than the synthetic California, roughly a quarter below the counterfactual.</p></div>
     <div class="cell wide"><span class="tag">The assumption and the check</span><p>The design assumes a close match before 1988 and no comparable tobacco policy in the donor states afterwards. The check is a placebo test: the authors built a synthetic version of each untreated state in turn, as if that state had passed the law, and asked whether California's gap was unusually large among them. Click a donor below for its share of the synthetic California.</p></div>
   </div>
   <div class="fig">
-    <canvas id="scmCv" width="1000" height="380" aria-label="California against synthetic California, cigarette sales"></canvas>
-    <span class="aux">Sketch of the paper's figure: packs per head, 1970 to 2000, with Proposition 99 in 1988. The dashed line is the synthetic California built from the five donor states and their published weights.</span>
+    <img class="figimg" src="img/abadie.webp" alt="Two panels of per capita cigarette sales, 1970 to 2000: California against the rest of the United States, and California against synthetic California, with Proposition 99 marked in 1988">
+    <p class="aux">Left: California against the average of the other states, which was already moving differently before 1988 and so cannot stand for California without the law. Right: California against the synthetic California, which tracks the pre-1988 path and then separates. Abadie, Diamond, and Hainmueller, 2010.</p>
     <div class="choices" id="scmDonors"></div>
     <div class="aux" id="scmNote">Each weight is the share of the synthetic California that the state supplies. The five weights sum to one.</div>
   </div>
@@ -203,6 +205,10 @@ footer a{color:var(--rose);text-decoration:none;border-bottom:1px solid var(--tr
     <div class="cell"><span class="tag">The comparison</span><p>Households today, just inside the old boundary against just outside. Distance to the boundary is the running variable, and only households close to the line enter the comparison.</p></div>
     <div class="cell"><span class="tag">The finding</span><p>Household consumption inside the former catchment is about 25% lower today, and stunting among children about 6 percentage points higher. The channels identified were weaker land tenure and poorer roads inside the line.</p></div>
     <div class="cell wide"><span class="tag">The assumption and the check</span><p>The design assumes that nothing else changes at the line: households did not move across in anticipation, and no other policy switches there. The checks are a density test, for bunching of households on one side, and balance tests on characteristics the mita could not have caused, such as elevation and rainfall. Narrow the bandwidth below and compare the estimate with the sample size.</p></div>
+  </div>
+  <div class="fig">
+    <img class="figimg" src="img/dell.webp" alt="Maps of the mita boundary with district outcomes, and a regression table of the mita effect on literacy and schooling">
+    <p class="aux">The mita boundary in green across the study region, with district outcomes shaded, and estimates of the mita effect on schooling. Dell, 2010.</p>
   </div>
   <div class="fig">
     <div class="row"><label for="rddBw">Bandwidth, km</label><input type="range" id="rddBw" min="10" max="100" value="50" step="5"><span class="aux" id="rddBwTxt">50 km</span></div>
@@ -288,24 +294,7 @@ footer a{color:var(--rose);text-decoration:none;border-bottom:1px solid var(--tr
   }
   const label=(ctx,txt,x,y,col,align)=>{ ctx.fillStyle=col; ctx.font='17px Cormorant Garamond, serif'; ctx.textAlign=align||'left'; ctx.textBaseline='middle'; ctx.fillText(txt,x,y); };
 
-  // ---- I. RCT: 134 villages, baseline distance to clinic; lottery vs self-selection ----
-  const villages=Array.from({length:134},(_,i)=>({i,dist:Math.max(1,8+4*gauss(srand)),keen:srand()}));
-  let selfSelect=false;
-  function assign(){ if(!selfSelect){ const order=villages.map(v=>v.i); for(let k=order.length-1;k>0;k--){ const m=rnd(k+1); [order[k],order[m]]=[order[m],order[k]]; } order.forEach((id,pos)=>{ villages[id].arm=pos<30?1:(pos<60?2:0); }); }
-    else { const order=villages.slice().sort((a,b)=>(a.dist-b.dist)+2*(b.keen-a.keen)).map(v=>v.i); order.forEach((id,pos)=>{ villages[id].arm=pos<30?2:(pos<60?1:0); }); } }
-  function drawRCT(){
-    const cv=$('rctCv'), ctx=cv.getContext('2d'), W=cv.width,H=cv.height; ctx.clearRect(0,0,W,H);
-    const cols=['#9FB295','#4F5D75','#A34860'], names=['Control','Camp','Camp and incentives'];
-    const cw=W/3; villages.forEach((v,i)=>{ const col=v.arm, k=villages.filter((x,j)=>j<i&&x.arm===col).length; const x=col*cw+30+(k%12)*((cw-60)/12), y=40+Math.floor(k/12)*28; ctx.fillStyle=cols[col]; ctx.beginPath(); ctx.arc(x+10,y,7+Math.min(10,v.dist)*0.5,0,Math.PI*2); ctx.fill(); });
-    [0,1,2].forEach(c=>{ const d=villages.filter(v=>v.arm===c).map(v=>v.dist); label(ctx,names[c]+' · '+d.length+' villages',c*cw+30,H-56,cols[c]); label(ctx,'mean distance to clinic '+mean(d).toFixed(1)+' km',c*cw+30,H-30,'#6E5140'); });
-    const d=[0,1,2].map(c=>mean(villages.filter(v=>v.arm===c).map(v=>v.dist)));
-    statBox('rctStats',[['control, km',d[0].toFixed(1)],['camp, km',d[1].toFixed(1)],['camp + incentives, km',d[2].toFixed(1)],['largest gap, km',(Math.max(...d)-Math.min(...d)).toFixed(1)],['assignment',selfSelect?'villages chose':'lottery']]);
-  }
-  $('rctDraw').addEventListener('click',()=>{ selfSelect=false; $('rctSelf').setAttribute('aria-pressed','false'); assign(); drawRCT(); });
-  $('rctSelf').addEventListener('click',()=>{ selfSelect=!selfSelect; $('rctSelf').setAttribute('aria-pressed',String(selfSelect)); assign(); drawRCT(); });
   chipQ('rctQ','rctF','lot','Yes. The lottery assigned the camps without regard to the villages, so the groups differ only in the treatment, and the raw comparison estimates the effect.','Sample size and significance show that the difference is unlikely to be noise. Neither shows that the groups were alike to begin with; the lottery does that.');
-  assign(); drawRCT();
-
   // ---- II. DiD: two states, population index ----
   function drawDID(){
     const pre=parseInt($('didPre').value,10)/10;   // extra PA growth per year before 2008, index points
@@ -323,20 +312,7 @@ footer a{color:var(--rose);text-decoration:none;border-bottom:1px solid var(--tr
   $('didPre').addEventListener('input',drawDID); drawDID();
   chipQ('didQ','didF','pre','Yes. Trends that diverged before the policy mean that New York cannot stand in for Pennsylvania without fracking, and the gap after 2008 combines the policy with the earlier trend.','A difference in levels does not matter, since the design compares changes. Growth in New York after 2008 does not matter either, since the design subtracts that growth.');
 
-  // ---- III. SCM: California against synthetic, sketch of the figure ----
   const donors=[['Utah',0.334],['Nevada',0.234],['Montana',0.199],['Colorado',0.164],['Connecticut',0.069]];
-  function drawSCM(){
-    const yrs=[]; for(let y=1970;y<=2000;y++) yrs.push(y);
-    const synth=yrs.map(y=>y<=1988?125-1.4*(y-1970)+2*Math.sin((y-1970)/2):100-1.2*(y-1988));
-    const cal=yrs.map((y,i)=>y<=1988?synth[i]+0.6*Math.sin(y):synth[i]-2.2*(y-1988));
-    const cv=$('scmCv'), ctx=cv.getContext('2d'); const [X,Y]=axes(ctx,cv.width,cv.height,60,20,20,48,1970,2000,40,140,'Year','Cigarette sales, packs per head',[1970,1975,1980,1985,1990,1995,2000]);
-    ctx.strokeStyle='#9A7B24'; ctx.setLineDash([6,6]); ctx.beginPath(); ctx.moveTo(X(1988),20); ctx.lineTo(X(1988),cv.height-48); ctx.stroke(); ctx.setLineDash([]); label(ctx,'Proposition 99',X(1988)+6,34,'#6E5140');
-    const line=(arr,col,dash)=>{ ctx.strokeStyle=col; ctx.lineWidth=2.5; ctx.setLineDash(dash?[5,6]:[]); ctx.beginPath(); arr.forEach((v,i)=>i?ctx.lineTo(X(yrs[i]),Y(v)):ctx.moveTo(X(yrs[i]),Y(v))); ctx.stroke(); ctx.setLineDash([]); };
-    line(synth,'#4F5D75',true); line(cal,'#A34860');
-    label(ctx,'California',X(2000)-4,Y(cal[30])+14,'#A34860','right'); label(ctx,'synthetic California',X(2000)-4,Y(synth[30])-14,'#4F5D75','right');
-    ctx.strokeStyle='#637040'; ctx.lineWidth=2; ctx.beginPath(); ctx.moveTo(X(2000)-40,Y(cal[30])); ctx.lineTo(X(2000)-40,Y(synth[30])); ctx.stroke(); label(ctx,'gap',X(2000)-46,(Y(cal[30])+Y(synth[30]))/2,'#637040','right');
-  }
-  drawSCM();
   donors.forEach(([n,w])=>{ const b=document.createElement('button'); b.type='button'; b.className='chip'; b.textContent=n+' '+w.toFixed(3); b.addEventListener('click',()=>{ [...$('scmDonors').children].forEach(x=>x.setAttribute('aria-pressed','false')); b.setAttribute('aria-pressed','true'); $('scmNote').textContent=n+' supplies '+(100*w).toFixed(1)+'% of the synthetic California, and the remaining four donors supply '+(100-100*w).toFixed(1)+'%. States with zero weight did not improve the match before 1988.'; }); $('scmDonors').appendChild(b); });
   chipQ('scmQ','scmF','fit','Yes. If the donors cannot reproduce California before the law, there is no reason to expect them to reproduce the California that never passed the law.','A small number of donors with positive weight is usual, and the weights sum to one by construction. Neither is a flaw.');
 
