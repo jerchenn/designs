@@ -100,13 +100,15 @@ footer a{color:var(--rose);text-decoration:none;border-bottom:1px solid var(--tr
     <h1>Five Designs</h1>
     <div class="orn">✦ · ✦</div>
   </div>
-  <p>In 1854 John Snow marked every cholera death in Soho on a map and found them heaped around one water pump. That was suggestive, not proof: the people near the pump might have shared something else. His proof came from south of the river, where two water companies served the same streets, house by house, one drawing from the sewage-laden Thames and one from upstream. Neighbours had chosen their company years earlier for reasons that had nothing to do with cholera, so the death rates could be compared as if a lottery had assigned the water. Snow had found a host whose rule was unrelated to the outcome.</p>
-  <p>Every design below is a way of finding such a host, or of becoming one. For each, the study the lecture uses, and the same three questions: who decided who was treated, what has to be assumed, and how to check. The pictures are sketches of the logic, not the published data.</p>
+  <p class="aux">The map above is the first natural experiment: John Snow, Soho, 1854. The designs below are five ways of finding one.</p>
+  <div class="row">
+    <a class="btn" href="#rct">Randomised trial</a><a class="btn" href="#did">Difference in differences</a><a class="btn" href="#scm">Synthetic control</a><a class="btn" href="#rdd">Regression discontinuity</a><a class="btn" href="#ivs">Instrumental variable</a>
+  </div>
 </header>
 
 <div class="node"><div class="stem"></div><div class="dot"></div><span class="tag">Design I · Randomised controlled trial</span></div>
 
-<section class="frame" aria-label="Randomised controlled trial">
+<section class="frame" id="rct" aria-label="Randomised controlled trial">
   <span class="sign">Let a lottery choose</span>
   <div class="grid">
     <div class="cell wide"><span class="tag">The idea</span><p>Give the treatment to some and not to others, and let a coin decide who. Then the only thing that differs between the two groups is the treatment, so whatever differs afterwards was caused by the treatment.</p></div>
@@ -118,7 +120,7 @@ footer a{color:var(--rose);text-decoration:none;border-bottom:1px solid var(--tr
   </div>
   <div class="fig">
     <div class="row"><button type="button" class="btn primary" id="rctDraw">Draw the lottery again</button><button type="button" class="btn" id="rctSelf" aria-pressed="false">Let villages choose instead</button></div>
-    <canvas id="rct" width="1000" height="360" aria-label="Village groups and their baseline averages"></canvas>
+    <canvas id="rctCv" width="1000" height="360" aria-label="Village groups and their baseline averages"></canvas>
     <span class="aux">Sketch: 134 villages with a made-up baseline distance to the nearest clinic. Under the lottery the three groups' average distances agree; under self-selection the keen villages, which are nearer, take the camps.</span>
   </div>
   <div class="stats" id="rctStats"></div>
@@ -132,7 +134,7 @@ footer a{color:var(--rose);text-decoration:none;border-bottom:1px solid var(--tr
 
 <div class="node"><div class="stem"></div><div class="dot"></div><span class="tag">Design II · Difference in differences</span></div>
 
-<section class="frame" aria-label="Difference in differences">
+<section class="frame" id="did" aria-label="Difference in differences">
   <span class="sign">Two places, before and after</span>
   <div class="grid">
     <div class="cell wide"><span class="tag">The idea</span><p>Two places, one gets a policy. Do not compare them afterwards, since they were never the same. Compare how much each one changed. The untreated place shows what would have happened anyway, and the extra change in the treated place is the effect.</p></div>
@@ -144,7 +146,7 @@ footer a{color:var(--rose);text-decoration:none;border-bottom:1px solid var(--tr
   </div>
   <div class="fig">
     <div class="row"><label for="didPre">Pre-period divergence</label><input type="range" id="didPre" min="0" max="10" value="0" step="1"></div>
-    <canvas id="did" width="1000" height="380" aria-label="Population index in two states, before and after drilling"></canvas>
+    <canvas id="didCv" width="1000" height="380" aria-label="Population index in two states, before and after drilling"></canvas>
     <span class="aux">Sketch: population index, 2000 = 100, drilling from 2008 marked. The dashed line is the counterfactual Pennsylvania the design assumes: Pennsylvania's level, New York's trend.</span>
   </div>
   <div class="stats" id="didStats"></div>
@@ -158,7 +160,7 @@ footer a{color:var(--rose);text-decoration:none;border-bottom:1px solid var(--tr
 
 <div class="node"><div class="stem"></div><div class="dot"></div><span class="tag">Design III · Synthetic control</span></div>
 
-<section class="frame" aria-label="Synthetic control">
+<section class="frame" id="scm" aria-label="Synthetic control">
   <span class="sign">Build the control from parts</span>
   <div class="grid">
     <div class="cell wide"><span class="tag">The idea</span><p>No single place is a twin of California. So build one: blend other states in the proportions that make the blend behave like California before the law, then watch what the blend does after. The blend is the California that never passed the law.</p></div>
@@ -169,7 +171,7 @@ footer a{color:var(--rose);text-decoration:none;border-bottom:1px solid var(--tr
     <div class="cell wide"><span class="tag">The assumption, and the check</span><p>That the blend matched California closely before the law and that the donor states did nothing similar afterwards. The check is a placebo: pretend each untreated state passed the law, build its blend, and see whether California's gap stands out among the pretend ones. Click a donor below to see its share of the blend.</p></div>
   </div>
   <div class="fig">
-    <canvas id="scm" width="1000" height="380" aria-label="California against synthetic California, cigarette sales"></canvas>
+    <canvas id="scmCv" width="1000" height="380" aria-label="California against synthetic California, cigarette sales"></canvas>
     <span class="aux">Sketch of the paper's figure: packs per head, 1970 to 2000, Proposition 99 marked in 1988. The dashed line is the synthetic California built from the five donor states and their published weights.</span>
     <div class="choices" id="scmDonors"></div>
     <div class="aux" id="scmNote">Each donor's weight is the share of the synthetic California that state supplies. Together the five make one whole.</div>
@@ -184,7 +186,7 @@ footer a{color:var(--rose);text-decoration:none;border-bottom:1px solid var(--tr
 
 <div class="node"><div class="stem"></div><div class="dot"></div><span class="tag">Design IV · Regression discontinuity</span></div>
 
-<section class="frame" aria-label="Regression discontinuity">
+<section class="frame" id="rdd" aria-label="Regression discontinuity">
   <span class="sign">Compare either side of a line</span>
   <div class="grid">
     <div class="cell wide"><span class="tag">The idea</span><p>A rule draws a line, and treatment switches at the line. People just either side are the same people in every way but one. Compare them, and only them.</p></div>
@@ -196,7 +198,7 @@ footer a{color:var(--rose);text-decoration:none;border-bottom:1px solid var(--tr
   </div>
   <div class="fig">
     <div class="row"><label for="rddBw">Bandwidth, km</label><input type="range" id="rddBw" min="10" max="100" value="50" step="5"><span class="aux" id="rddBwTxt">50 km</span></div>
-    <canvas id="rdd" width="1000" height="380" aria-label="Consumption against distance to the mita boundary"></canvas>
+    <canvas id="rddCv" width="1000" height="380" aria-label="Consumption against distance to the mita boundary"></canvas>
     <span class="aux">Sketch: districts by distance to the boundary, inside to the left of zero, with a made-up consumption index. The lines are fitted separately on each side within the bandwidth; the gap at zero is the estimate.</span>
   </div>
   <div class="stats" id="rddStats"></div>
@@ -210,7 +212,7 @@ footer a{color:var(--rose);text-decoration:none;border-bottom:1px solid var(--tr
 
 <div class="node"><div class="stem"></div><div class="dot"></div><span class="tag">Design V · Instrumental variable</span></div>
 
-<section class="frame" aria-label="Instrumental variable">
+<section class="frame" id="ivs" aria-label="Instrumental variable">
   <span class="sign">Find a lever that moves only the treatment</span>
   <div class="grid">
     <div class="cell wide"><span class="tag">The idea</span><p>You cannot randomise the treatment, but sometimes something random pushes people towards the treatment. Follow the push: see how much more often the pushed group got treated, see how much their outcome moved, and divide the second by the first.</p></div>
@@ -222,7 +224,7 @@ footer a{color:var(--rose);text-decoration:none;border-bottom:1px solid var(--tr
   </div>
   <div class="fig">
     <div class="row"><label for="ivFs">First stage</label><input type="range" id="ivFs" min="5" max="40" value="15" step="1"><span class="aux" id="ivFsTxt">15 points more likely to serve</span></div>
-    <canvas id="iv" width="1000" height="380" aria-label="Service probability and earnings by lottery number"></canvas>
+    <canvas id="ivCv" width="1000" height="380" aria-label="Service probability and earnings by lottery number"></canvas>
     <span class="aux">Sketch: lottery numbers along the bottom, with those below the call-up ceiling on the left. Upper line, share who served; lower line, later earnings. The jumps are illustrative.</span>
   </div>
   <div class="stats" id="ivStats"></div>
@@ -282,7 +284,7 @@ footer a{color:var(--rose);text-decoration:none;border-bottom:1px solid var(--tr
   function assign(){ if(!selfSelect){ const order=villages.map(v=>v.i); for(let k=order.length-1;k>0;k--){ const m=rnd(k+1); [order[k],order[m]]=[order[m],order[k]]; } order.forEach((id,pos)=>{ villages[id].arm=pos<30?1:(pos<60?2:0); }); }
     else { const order=villages.slice().sort((a,b)=>(a.dist-b.dist)+2*(b.keen-a.keen)).map(v=>v.i); order.forEach((id,pos)=>{ villages[id].arm=pos<30?2:(pos<60?1:0); }); } }
   function drawRCT(){
-    const cv=$('rct'), ctx=cv.getContext('2d'), W=cv.width,H=cv.height; ctx.clearRect(0,0,W,H);
+    const cv=$('rctCv'), ctx=cv.getContext('2d'), W=cv.width,H=cv.height; ctx.clearRect(0,0,W,H);
     const cols=['#9FB295','#4F5D75','#A34860'], names=['Control','Camp','Camp and incentives'];
     const cw=W/3; villages.forEach((v,i)=>{ const col=v.arm, k=villages.filter((x,j)=>j<i&&x.arm===col).length; const x=col*cw+30+(k%12)*((cw-60)/12), y=40+Math.floor(k/12)*28; ctx.fillStyle=cols[col]; ctx.beginPath(); ctx.arc(x+10,y,7+Math.min(10,v.dist)*0.5,0,Math.PI*2); ctx.fill(); });
     [0,1,2].forEach(c=>{ const d=villages.filter(v=>v.arm===c).map(v=>v.dist); label(ctx,names[c]+' · '+d.length+' villages',c*cw+30,H-56,cols[c]); label(ctx,'mean distance to clinic '+mean(d).toFixed(1)+' km',c*cw+30,H-30,'#6E5140'); });
@@ -300,7 +302,7 @@ footer a{color:var(--rose);text-decoration:none;border-bottom:1px solid var(--tr
     const yrs=[]; for(let y=2000;y<=2020;y++) yrs.push(y);
     const ny=yrs.map(y=>100+0.5*(y-2000)), pa=yrs.map(y=>100+0.5*(y-2000)+pre*(Math.min(y,2008)-2000)+(y>2008?1.2*(y-2008):0));
     const cf=yrs.map((y,i)=>y<=2008?pa[i]:pa[8]+(ny[i]-ny[8]));
-    const cv=$('did'), ctx=cv.getContext('2d'); const [X,Y]=axes(ctx,cv.width,cv.height,60,20,20,48,2000,2020,96,128,'Year','Population index, 2000 = 100',[2000,2005,2010,2015,2020]);
+    const cv=$('didCv'), ctx=cv.getContext('2d'); const [X,Y]=axes(ctx,cv.width,cv.height,60,20,20,48,2000,2020,96,128,'Year','Population index, 2000 = 100',[2000,2005,2010,2015,2020]);
     ctx.strokeStyle='#9A7B24'; ctx.setLineDash([6,6]); ctx.beginPath(); ctx.moveTo(X(2008),20); ctx.lineTo(X(2008),cv.height-48); ctx.stroke(); ctx.setLineDash([]); label(ctx,'drilling begins',X(2008)+6,34,'#6E5140');
     const line=(arr,col,dash)=>{ ctx.strokeStyle=col; ctx.lineWidth=2.5; ctx.setLineDash(dash?[5,6]:[]); ctx.beginPath(); arr.forEach((v,i)=>i?ctx.lineTo(X(yrs[i]),Y(v)):ctx.moveTo(X(yrs[i]),Y(v))); ctx.stroke(); ctx.setLineDash([]); };
     line(ny,'#4F5D75'); line(pa,'#A34860'); line(cf,'#A34860',true);
@@ -317,7 +319,7 @@ footer a{color:var(--rose);text-decoration:none;border-bottom:1px solid var(--tr
     const yrs=[]; for(let y=1970;y<=2000;y++) yrs.push(y);
     const synth=yrs.map(y=>y<=1988?125-1.4*(y-1970)+2*Math.sin((y-1970)/2):100-1.2*(y-1988));
     const cal=yrs.map((y,i)=>y<=1988?synth[i]+0.6*Math.sin(y):synth[i]-2.2*(y-1988));
-    const cv=$('scm'), ctx=cv.getContext('2d'); const [X,Y]=axes(ctx,cv.width,cv.height,60,20,20,48,1970,2000,40,140,'Year','Cigarette sales, packs per head',[1970,1975,1980,1985,1990,1995,2000]);
+    const cv=$('scmCv'), ctx=cv.getContext('2d'); const [X,Y]=axes(ctx,cv.width,cv.height,60,20,20,48,1970,2000,40,140,'Year','Cigarette sales, packs per head',[1970,1975,1980,1985,1990,1995,2000]);
     ctx.strokeStyle='#9A7B24'; ctx.setLineDash([6,6]); ctx.beginPath(); ctx.moveTo(X(1988),20); ctx.lineTo(X(1988),cv.height-48); ctx.stroke(); ctx.setLineDash([]); label(ctx,'Proposition 99',X(1988)+6,34,'#6E5140');
     const line=(arr,col,dash)=>{ ctx.strokeStyle=col; ctx.lineWidth=2.5; ctx.setLineDash(dash?[5,6]:[]); ctx.beginPath(); arr.forEach((v,i)=>i?ctx.lineTo(X(yrs[i]),Y(v)):ctx.moveTo(X(yrs[i]),Y(v))); ctx.stroke(); ctx.setLineDash([]); };
     line(synth,'#4F5D75',true); line(cal,'#A34860');
@@ -333,7 +335,7 @@ footer a{color:var(--rose);text-decoration:none;border-bottom:1px solid var(--tr
   function fitLine(pts){ const n=pts.length, mx=mean(pts.map(p=>p.d)), my=mean(pts.map(p=>p.y)); const sxy=pts.reduce((s,p)=>s+(p.d-mx)*(p.y-my),0), sxx=pts.reduce((s,p)=>s+(p.d-mx)**2,0); const b=sxx?sxy/sxx:0; return [my-b*mx,b]; }
   function drawRDD(){
     const bw=parseInt($('rddBw').value,10); $('rddBwTxt').textContent=bw+' km';
-    const cv=$('rdd'), ctx=cv.getContext('2d'); const [X,Y]=axes(ctx,cv.width,cv.height,60,20,20,48,-100,100,30,140,'Distance to the mita boundary, km (inside to the left)','Consumption index',[-100,-50,0,50,100]);
+    const cv=$('rddCv'), ctx=cv.getContext('2d'); const [X,Y]=axes(ctx,cv.width,cv.height,60,20,20,48,-100,100,30,140,'Distance to the mita boundary, km (inside to the left)','Consumption index',[-100,-50,0,50,100]);
     ctx.strokeStyle='#9A7B24'; ctx.setLineDash([6,6]); ctx.beginPath(); ctx.moveTo(X(0),20); ctx.lineTo(X(0),cv.height-48); ctx.stroke(); ctx.setLineDash([]);
     ctx.fillStyle='rgba(227,166,172,.25)'; ctx.fillRect(X(-bw),20,X(bw)-X(-bw),cv.height-68);
     districts.forEach(p=>{ const used=Math.abs(p.d)<=bw; ctx.fillStyle=p.d<0?'#A34860':'#4F5D75'; ctx.globalAlpha=used?0.9:0.25; ctx.beginPath(); ctx.arc(X(p.d),Y(p.y),2.8,0,Math.PI*2); ctx.fill(); ctx.globalAlpha=1; });
@@ -351,7 +353,7 @@ footer a{color:var(--rose);text-decoration:none;border-bottom:1px solid var(--tr
   function drawIV(){
     const fs=parseInt($('ivFs').value,10); $('ivFsTxt').textContent=fs+' points more likely to serve';
     const rf=-4.5;   // reduced form: earnings gap in percent for low numbers, held fixed
-    const cv=$('iv'), ctx=cv.getContext('2d'), W=cv.width,H=cv.height; ctx.clearRect(0,0,W,H);
+    const cv=$('ivCv'), ctx=cv.getContext('2d'), W=cv.width,H=cv.height; ctx.clearRect(0,0,W,H);
     const draw=(T,B,ylo,yhi,yl,low,high,col)=>{ ctx.strokeStyle='#D8C8A0'; ctx.strokeRect(60,T,W-80,H-T-B); const X=v=>60+(v-1)/364*(W-80), Y=v=>H-B-(v-ylo)/(yhi-ylo)*(H-T-B);
       ctx.strokeStyle='#9A7B24'; ctx.setLineDash([6,6]); ctx.beginPath(); ctx.moveTo(X(195),T); ctx.lineTo(X(195),H-B); ctx.stroke(); ctx.setLineDash([]);
       ctx.strokeStyle=col; ctx.lineWidth=3; ctx.beginPath(); ctx.moveTo(X(1),Y(low)); ctx.lineTo(X(195),Y(low)); ctx.moveTo(X(195),Y(high)); ctx.lineTo(X(365),Y(high)); ctx.stroke();
