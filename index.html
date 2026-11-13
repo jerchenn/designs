@@ -241,12 +241,12 @@ footer .made{flex-basis:100%;text-align:center;font-size:.62rem;letter-spacing:.
       </table></div>
       <p>The first stage is the 15 men per 100 whose service the lottery decided. The other 85 behave the same in both groups and earn the same in both. Suppose a man who did not serve earns 100 and each server loses c. The high-number group averages 20 men at 100 minus c and 80 at 100; the low-number group averages 35 at 100 minus c and 65 at 100. The difference is 0.15c. If the observed gap is 4.5, then c is 30: the loss of 15 men, averaged over 100, looks like 4.5, and dividing by 0.15 recovers the loss per man moved. The estimate applies to those men, not to every veteran. Two-stage least squares does the same arithmetic by regression. These figures match the sketch below; Angrist's estimate is about 15%.</p>
     </div>
-    <div class="cell wide"><span class="tag">The assumption and the check</span><p>Two conditions. The instrument must move the treatment, which the first stage shows directly. The instrument must affect the outcome only through the treatment, and that condition cannot be tested; the authors argue for it from how the lottery worked. Drag the slider to see how a weak first stage inflates the estimate from the same earnings gap.</p></div>
+    <div class="cell wide"><span class="tag">The assumption and the check</span><p>Two conditions. The instrument must move the treatment, which the first stage shows directly. The instrument must affect the outcome only through the treatment, and that condition cannot be tested; the authors argue for it from how the lottery worked. In the figure below, move the share of men the lottery moved and the loss each of them suffers: the gap between the groups changes with both, and the ratio returns the loss per mover.</p></div>
   </div>
   <div class="fig">
-    <div class="row"><label for="ivFs">First stage</label><input type="range" id="ivFs" min="5" max="40" value="15" step="1"><span class="aux" id="ivFsTxt">15 points more likely to serve</span></div>
-    <canvas id="ivCv" width="1000" height="380" aria-label="Service probability and earnings by lottery number"></canvas>
-    <span class="aux">Sketch: lottery numbers along the bottom, with those below the call-up ceiling on the left. Upper line, share who served; lower line, later earnings. The jumps are illustrative.</span>
+    <div class="row"><label for="ivFs">Men moved per 100</label><input type="range" id="ivFs" min="5" max="40" value="15" step="1"><span class="aux" id="ivFsTxt">15</span><label for="ivC">Loss per mover, %</label><input type="range" id="ivC" min="5" max="50" value="30" step="1"><span class="aux" id="ivCTxt">30</span></div>
+    <canvas id="ivCv" width="1000" height="520" aria-label="Two groups of 100 men coloured by whether the lottery changed their service, with average income beneath"></canvas>
+    <span class="aux">Left, 100 men with low numbers; right, 100 with high numbers. Dark: served regardless. Pale: never served. Rose: the men the lottery moved into service, present in both groups but serving only on the left. The bars show average income, with non-servers at 100.</span>
   </div>
   <div class="stats" id="ivStats"></div>
   <div class="ask">
@@ -341,21 +341,26 @@ footer .made{flex-basis:100%;text-align:center;font-size:.62rem;letter-spacing:.
   }
   $('rddBw').addEventListener('input',drawRDD); drawRDD();
 
-  // ---- V. IV: lottery number, service, earnings ----
+  // ---- V. IV: two groups of 100, coloured by what the lottery changed ----
   function drawIV(){
-    const fs=parseInt($('ivFs').value,10); $('ivFsTxt').textContent=fs+' points more likely to serve';
-    const rf=-4.5;   // reduced form: earnings gap in percent for low numbers, held fixed
+    const fs=parseInt($('ivFs').value,10), c=parseInt($('ivC').value,10); $('ivFsTxt').textContent=fs; $('ivCTxt').textContent=c;
+    const always=20, never=100-always-fs;
     const cv=$('ivCv'), ctx=cv.getContext('2d'), W=cv.width,H=cv.height; ctx.clearRect(0,0,W,H);
-    const draw=(T,B,ylo,yhi,yl,low,high,col)=>{ ctx.strokeStyle='#D8C8A0'; ctx.strokeRect(60,T,W-80,H-T-B); const X=v=>60+(v-1)/364*(W-80), Y=v=>H-B-(v-ylo)/(yhi-ylo)*(H-T-B);
-      ctx.strokeStyle='#9A7B24'; ctx.setLineDash([6,6]); ctx.beginPath(); ctx.moveTo(X(195),T); ctx.lineTo(X(195),H-B); ctx.stroke(); ctx.setLineDash([]);
-      ctx.strokeStyle=col; ctx.lineWidth=3; ctx.beginPath(); ctx.moveTo(X(1),Y(low)); ctx.lineTo(X(195),Y(low)); ctx.moveTo(X(195),Y(high)); ctx.lineTo(X(365),Y(high)); ctx.stroke();
-      ctx.fillStyle='#6E5140'; ctx.font='17px Cormorant Garamond, serif'; ctx.textAlign='right'; ctx.textBaseline='middle'; ctx.fillText(ylo,54,Y(ylo)); ctx.fillText(yhi,54,Y(yhi)); ctx.save(); ctx.translate(14,(T+H-B)/2); ctx.rotate(-Math.PI/2); ctx.textAlign='center'; ctx.fillText(yl,0,0); ctx.restore(); return [X,Y]; };
-    const [X1,Y1]=draw(20,200,0,60,'% who served',20+fs,20,'#4F5D75'); label(ctx,'called up',X1(100),Y1(20+fs)-14,'#4F5D75','center'); label(ctx,'not called',X1(280),Y1(20)-14,'#4F5D75','center');
-    const [X2,Y2]=draw(200,48,-10,5,'earnings, % gap',rf,0,'#A34860'); label(ctx,'low numbers earn less',X2(100),Y2(rf)+14,'#A34860','center');
-    ctx.fillStyle='#6E5140'; ctx.textAlign='center'; ctx.textBaseline='top'; [1,100,195,300,365].forEach(v=>ctx.fillText(v,X2(v),H-42)); ctx.fillText('Lottery number, 1 to 365; ceiling at 195',W/2,H-22);
-    statBox('ivStats',[['first stage, points',fs],['reduced form, % earnings',rf.toFixed(1)],['IV estimate, % for those who served',(100*rf/fs).toFixed(0)]]);
+    const cell=26, gridW=10*cell; const gx=[90, W-90-gridW]; const gy=60;
+    const col={always:'#4F5D75',never:'#DFCBD2',mover:'#A34860'};
+    [0,1].forEach(g=>{ ctx.font='19px Cormorant Garamond, serif'; ctx.fillStyle='#A34860'; ctx.textAlign='center'; ctx.textBaseline='bottom'; ctx.fillText(g?'High numbers: not called':'Low numbers: called',gx[g]+gridW/2,gy-14);
+      for(let i=0;i<100;i++){ const r=Math.floor(i/10), q=i%10; const x=gx[g]+q*cell+cell/2, y=gy+r*cell+cell/2; let type=i<always?'always':(i<always+fs?'mover':'never');
+        ctx.beginPath(); ctx.arc(x,y,9,0,Math.PI*2);
+        if(type==='mover'&&g===1){ ctx.fillStyle='#FAF4E8'; ctx.fill(); ctx.strokeStyle=col.mover; ctx.lineWidth=2; ctx.stroke(); }
+        else { ctx.fillStyle=col[type]; ctx.fill(); ctx.strokeStyle='#9A7B24'; ctx.lineWidth=0.6; ctx.stroke(); } } });
+    const incL=(always*(100-c)+fs*(100-c)+never*100)/100, incH=(always*(100-c)+fs*100+never*100)/100, gap=incH-incL;
+    const by=gy+10*cell+40, bh=90; const scale=v=>(v-60)/40*bh;
+    [0,1].forEach(g=>{ const v=g?incH:incL; const x=gx[g]+gridW/2-60; ctx.fillStyle=g?'#9FB295':'#A34860'; ctx.fillRect(x,by+bh-scale(v),120,scale(v)); ctx.fillStyle='#2C1F14'; ctx.font='19px Cormorant Garamond, serif'; ctx.textAlign='center'; ctx.textBaseline='bottom'; ctx.fillText('average income '+v.toFixed(1),x+60,by+bh-scale(v)-6); });
+    ctx.strokeStyle='#D8C8A0'; ctx.beginPath(); ctx.moveTo(60,by+bh); ctx.lineTo(W-60,by+bh); ctx.stroke();
+    ctx.fillStyle='#6E5140'; ctx.textAlign='center'; ctx.textBaseline='top'; ctx.fillText('gap between the groups = '+(fs/100).toFixed(2)+' × '+c+' = '+gap.toFixed(1)+' · divided by '+(fs/100).toFixed(2)+' gives '+c,W/2,by+bh+8);
+    statBox('ivStats',[['first stage: men moved per 100',fs],['reduced form: income gap',gap.toFixed(1)],['ratio: effect per mover',(gap/(fs/100)).toFixed(0)],['true loss per mover',c]]);
   }
-  $('ivFs').addEventListener('input',drawIV); drawIV();
+  $('ivFs').addEventListener('input',drawIV); $('ivC').addEventListener('input',drawIV); drawIV();
   chipQ('ivQ','ivF','school','Yes. The lottery would then reach earnings through schooling as well as through service, and the exclusion restriction would fail. The estimate would combine the cost of service with the return to the additional schooling.','Imperfect compliance is expected, and the first stage measures its extent. Random draws are the condition that makes the instrument valid.');
 })();
 </script>
