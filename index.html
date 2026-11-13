@@ -138,11 +138,6 @@ footer .made{flex-basis:100%;text-align:center;font-size:.62rem;letter-spacing:.
     <img class="figimg" src="img/bmj.webp" alt="Bar chart: share of children fully immunised in control villages, camp villages, camp and incentive villages, and villages neighbouring each, with confidence intervals">
     <p class="aux">Fully immunised, by arm, with 95% confidence intervals. The two right-hand bars are villages within six kilometres of a camp, which also gained. Banerjee, Duflo, Glennerster, and Kothari, 2010.</p>
   </div>
-  <div class="ask">
-    <div class="q">Why can the raw difference between the three shares be read as a causal effect here, when the regression on the previous page could not be?</div>
-    <div class="choices" id="rctQ"><button type="button" class="chip" data-v="lot">Because a lottery decided which villages received a camp</button><button type="button" class="chip" data-v="n">Because the sample is large</button><button type="button" class="chip" data-v="sig">Because the differences are statistically significant</button></div>
-    <div class="fb" id="rctF"></div>
-  </div>
   <p class="ref">Banerjee, Duflo, Glennerster, and Kothari, BMJ 2010; 340: c2220.</p>
 </section>
 
@@ -194,11 +189,6 @@ footer .made{flex-basis:100%;text-align:center;font-size:.62rem;letter-spacing:.
     <div class="choices" id="scmDonors"></div>
     <div class="aux" id="scmNote">Each weight is the share of the synthetic California that the state supplies. The five weights sum to one.</div>
   </div>
-  <div class="ask">
-    <div class="q">What would make the synthetic control untrustworthy?</div>
-    <div class="choices" id="scmQ"><button type="button" class="chip" data-v="fit">The weighted average fails to track California before 1988</button><button type="button" class="chip" data-v="five">Only five states receive positive weight</button><button type="button" class="chip" data-v="sum">The weights sum to one</button></div>
-    <div class="fb" id="scmF"></div>
-  </div>
   <p class="ref">Abadie, Diamond, and Hainmueller, Journal of the American Statistical Association 2010; 105(490): 493 to 505.</p>
 </section>
 
@@ -224,11 +214,6 @@ footer .made{flex-basis:100%;text-align:center;font-size:.62rem;letter-spacing:.
     <span class="aux">Sketch: districts by distance to the boundary, inside to the left of zero, with an invented consumption index. The lines are fitted separately on each side within the bandwidth, and the gap at zero is the estimate.</span>
   </div>
   <div class="stats" id="rddStats"></div>
-  <div class="ask">
-    <div class="q">Why does the comparison use only places near the boundary, when the whole catchment was treated?</div>
-    <div class="choices" id="rddQ"><button type="button" class="chip" data-v="alike">Because only near the line are the two sides alike in everything but the mita</button><button type="button" class="chip" data-v="more">Because there are more households near the line</button><button type="button" class="chip" data-v="map">Because the boundary is easier to map there</button></div>
-    <div class="fb" id="rddF"></div>
-  </div>
   <p class="ref">Dell, Econometrica 2010; 78(6): 1863 to 1903.</p>
 </section>
 
@@ -304,7 +289,6 @@ footer .made{flex-basis:100%;text-align:center;font-size:.62rem;letter-spacing:.
   }
   const label=(ctx,txt,x,y,col,align)=>{ ctx.fillStyle=col; ctx.font='17px Cormorant Garamond, serif'; ctx.textAlign=align||'left'; ctx.textBaseline='middle'; ctx.fillText(txt,x,y); };
 
-  chipQ('rctQ','rctF','lot','Yes. The lottery assigned the camps without regard to the villages, so the groups differ only in the treatment, and the raw comparison estimates the effect.','Sample size and significance show that the difference is unlikely to be noise. Neither shows that the groups were alike to begin with; the lottery does that.');
   // ---- II. DiD: two states, population index ----
   function drawDID(){
     const pre=parseInt($('didPre').value,10)/10;   // extra PA growth per year before 2008, index points
@@ -324,7 +308,6 @@ footer .made{flex-basis:100%;text-align:center;font-size:.62rem;letter-spacing:.
 
   const donors=[['Utah',0.334],['Nevada',0.234],['Montana',0.199],['Colorado',0.164],['Connecticut',0.069]];
   donors.forEach(([n,w])=>{ const b=document.createElement('button'); b.type='button'; b.className='chip'; b.textContent=n+' '+w.toFixed(3); b.addEventListener('click',()=>{ [...$('scmDonors').children].forEach(x=>x.setAttribute('aria-pressed','false')); b.setAttribute('aria-pressed','true'); $('scmNote').textContent=n+' supplies '+(100*w).toFixed(1)+'% of the synthetic California, and the remaining four donors supply '+(100-100*w).toFixed(1)+'%. States with zero weight did not improve the match before 1988.'; }); $('scmDonors').appendChild(b); });
-  chipQ('scmQ','scmF','fit','Yes. If the donors cannot reproduce California before the law, there is no reason to expect them to reproduce the California that never passed the law.','A small number of donors with positive weight is usual, and the weights sum to one by construction. Neither is a flaw.');
 
   // ---- IV. RDD: districts by distance to the mita boundary ----
   const districts=Array.from({length:420},()=>{ const d=-100+200*srand(); const inside=d<0; return {d,y:100-0.08*d+(inside?-25:0)+6*gauss(srand)}; });
@@ -343,7 +326,6 @@ footer .made{flex-basis:100%;text-align:center;font-size:.62rem;letter-spacing:.
     statBox('rddStats',[['jump at the boundary',(aR-aL).toFixed(1)+' points'],['districts used',L.length+R.length],['inside, within bandwidth',L.length],['outside, within bandwidth',R.length]]);
   }
   $('rddBw').addEventListener('input',drawRDD); drawRDD();
-  chipQ('rddQ','rddF','alike','Yes. Far from the line, geography and history differ for reasons unrelated to the mita. At the line, the only difference is the side on which a village fell.','The number of households and the ease of mapping do not decide what is comparable. Likeness on the two sides does.');
 
   // ---- V. IV: lottery number, service, earnings ----
   function drawIV(){
